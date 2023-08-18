@@ -1,11 +1,19 @@
 export const leftNavLinks = [
   {
-    label: "Create Showject",
-    link: "/create-showject",
+    label: "Home",
+    route: "/home",
   },
   {
     label: "Create Showject",
-    link: "/create-showject",
+    route: "/create-showject",
+  },
+  {
+    label: "Top Showjects",
+    route: "/top-showjects",
+  },
+  {
+    label: "Search Developers",
+    route: "/search-developers",
   },
 ];
 
