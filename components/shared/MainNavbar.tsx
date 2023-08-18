@@ -2,7 +2,7 @@ import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import Image from "next/image";
 import { BiSolidLogOutCircle } from "react-icons/bi";
 
-function MainNavbar() {
+async function MainNavbar() {
   return (
     <nav className="fixed z-10 top-0 left-0 w-full bg-light-1 border-b-[1.5px] flex items-center justify-between py-2 px-5">
       <Image
