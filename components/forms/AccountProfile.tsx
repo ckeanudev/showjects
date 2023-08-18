@@ -7,6 +7,7 @@ import { ChangeEvent, useState } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useUploadThing } from "@/lib/uploadthing";
+import { CgSpinner } from "react-icons/cg";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +22,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import Image from "next/image";
 import { updateUser } from "@/lib/actions/user.actions";
+import { error } from "console";
 
 interface Props {
   user: {
@@ -43,6 +45,7 @@ interface Props {
 }
 
 const AccountProfile = ({ user, btnTitle }: Props) => {
+  const [loadSpin, setLoadSpin] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
@@ -91,6 +94,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   };
 
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
+    setLoadSpin(true);
+
     const blob = values.profile_photo;
 
     const hasImageChanged = isBase64Image(blob);
@@ -118,7 +123,15 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       twitter: values.twitter || "",
       instagram: values.instagram || "",
       path: pathname,
-    });
+    })
+      .then((res) => {
+        console.log(`User added successfully`);
+        console.log(res);
+      })
+      .catch((error) => {
+        setLoadSpin(false);
+        console.log(error);
+      });
 
     if (pathname === `/profile/edit`) {
       router.back();
@@ -146,7 +159,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                     width={96}
                     height={96}
                     priority
-                    className="rounded-full object-cover"
+                    className="rounded-full object-cover min-w-[74px] max-w-[74px] min-h-[74px] max-h-[74px]"
                   />
                 ) : (
                   <Image
@@ -339,7 +352,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
 
         <Button
           type="submit"
-          className="bg-accent-1 hover:bg-accent-1_hover  text-light-1 font-semibold text-lg p-6 mt-5">
+          className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
+          {loadSpin && <CgSpinner size={22} className="animate-spin" />}
           {btnTitle}
         </Button>
       </form>
