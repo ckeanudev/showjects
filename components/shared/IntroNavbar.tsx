@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { BiSolidLogInCircle } from "react-icons/bi";
 import { useRouter } from "next/navigation";
+import { memo } from "react";
 
 interface Props {}
 
@@ -34,4 +35,4 @@ const IntroNavbar = (prop: Props) => {
   );
 };
 
-export default IntroNavbar;
+export default memo(IntroNavbar);

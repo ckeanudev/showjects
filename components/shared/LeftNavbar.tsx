@@ -7,6 +7,7 @@ import Link from "next/link";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import { BiSolidLogOutCircle } from "react-icons/bi";
 import MainNavLinks from "./MainNavLinks";
+import { memo } from "react";
 
 const LeftNavbar = async () => {
   const user = await currentUser();
@@ -53,4 +54,4 @@ const LeftNavbar = async () => {
   );
 };
 
-export default LeftNavbar;
+export default memo(LeftNavbar);

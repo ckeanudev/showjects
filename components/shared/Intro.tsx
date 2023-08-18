@@ -2,6 +2,7 @@
 
 import { BiSolidLogInCircle } from "react-icons/bi";
 import { useRouter } from "next/navigation";
+import { memo } from "react";
 
 const Intro = () => {
   const router = useRouter();
@@ -33,4 +34,4 @@ const Intro = () => {
   );
 };
 
-export default Intro;
+export default memo(Intro);

@@ -1,5 +1,7 @@
+import { memo } from "react";
+
 const MainShowjectCard = () => {
   return <article>MainShowjectCard</article>;
 };
 
-export default MainShowjectCard;
+export default memo(MainShowjectCard);

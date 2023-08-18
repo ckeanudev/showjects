@@ -3,7 +3,7 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UserValidation } from "@/lib/validations/user";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, memo } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useUploadThing } from "@/lib/uploadthing";
@@ -361,4 +361,4 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   );
 };
 
-export default AccountProfile;
+export default memo(AccountProfile);

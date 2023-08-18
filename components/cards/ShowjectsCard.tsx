@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FaCommentDots, FaHeart } from "react-icons/fa";
+import { memo } from "react";
 
 interface Props {
   id: string;
@@ -72,4 +73,4 @@ const ShowjectsCard = ({
   );
 };
 
-export default ShowjectsCard;
+export default memo(ShowjectsCard);

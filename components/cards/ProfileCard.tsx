@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { memo } from "react";
 
 interface Props {
   userId: string;
@@ -33,4 +34,4 @@ const ProfileCard = ({
   );
 };
 
-export default ProfileCard;
+export default memo(ProfileCard);

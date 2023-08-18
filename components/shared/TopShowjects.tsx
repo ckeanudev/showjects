@@ -1,5 +1,6 @@
 import { smallProjects } from "@/constant";
 import ShowjectsCard from "../cards/ShowjectsCard";
+import { memo } from "react";
 
 const TopShowjects = () => {
   return (
@@ -32,4 +33,4 @@ const TopShowjects = () => {
   );
 };
 
-export default TopShowjects;
+export default memo(TopShowjects);

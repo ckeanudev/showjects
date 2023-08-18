@@ -4,6 +4,7 @@ import { BsFillCollectionFill } from "react-icons/bs";
 import { leftNavLinks } from "@/constant";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { memo } from "react";
 
 const MainNavLinks = () => {
   const pathname = usePathname();
@@ -35,4 +36,4 @@ const MainNavLinks = () => {
   );
 };
 
-export default MainNavLinks;
+export default memo(MainNavLinks);
