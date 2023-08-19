@@ -78,7 +78,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     fieldChange: (value: string) => void
   ) => {
     e.preventDefault();
-
     const fileReader = new FileReader();
 
     if (e.target.files && e.target.files.length > 0) {

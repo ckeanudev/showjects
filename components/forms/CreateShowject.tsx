@@ -2,15 +2,238 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { UserValidation } from "@/lib/validations/user";
 import { ChangeEvent, useState, memo } from "react";
 import { isBase64Image } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useUploadThing } from "@/lib/uploadthing";
 import { CgSpinner } from "react-icons/cg";
 
-const CreateShowject = () => {
-  return <section></section>;
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "../ui/textarea";
+import Image from "next/image";
+import { ShowjectValidation } from "@/lib/validations/showject";
+import { createShowject } from "@/lib/actions/showject.action";
+
+interface Props {
+  userId: string;
+}
+
+const CreateShowject = ({ userId }: Props) => {
+  const [loadSpin, setLoadSpin] = useState<boolean>(false);
+  const [files, setFiles] = useState<File[]>([]);
+  const { startUpload } = useUploadThing("media");
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const form = useForm({
+    resolver: zodResolver(ShowjectValidation),
+    defaultValues: {
+      showject_photo: "",
+      title: "",
+      description: "",
+      sourceCodeUrl: "",
+      liveUrl: "",
+    },
+  });
+
+  const handleImage = (
+    e: ChangeEvent<HTMLInputElement>,
+    fieldChange: (value: string) => void
+  ) => {
+    e.preventDefault();
+    const fileReader = new FileReader();
+
+    if (e.target.files && e.target.files.length > 0) {
+      const file = e.target.files[0];
+      setFiles(Array.from(e.target.files));
+
+      if (!file.type.includes("image")) return;
+
+      fileReader.onload = async (event) => {
+        const imageDataUrl = event.target?.result?.toString() || "";
+
+        fieldChange(imageDataUrl);
+      };
+
+      fileReader.readAsDataURL(file);
+    }
+  };
+
+  const onSubmit = async (values: z.infer<typeof ShowjectValidation>) => {
+    setLoadSpin(true);
+
+    const blob = values.showject_photo;
+
+    // const hasImageChanged = isBase64Image(blob);
+
+    // if (hasImageChanged) {
+    //   const imgRes = await startUpload(files);
+
+    //   if (imgRes && imgRes[0].fileUrl) {
+    //     values.showject_photo = imgRes[0].fileUrl;
+    //   }
+    // }
+
+    const imgRes = await startUpload(files);
+
+    if (imgRes && imgRes[0].fileUrl) {
+      values.showject_photo = imgRes[0].fileUrl;
+    }
+
+    console.log({
+      image: values.showject_photo,
+      title: values.title,
+      description: values.description || "",
+      sourceCodeUrl: values.sourceCodeUrl,
+      liveUrl: values.liveUrl || "",
+      authorId: userId,
+      path: pathname,
+    });
+
+    // TODO: Create or Update showject
+    await createShowject({
+      image: values.showject_photo,
+      title: values.title,
+      description: values.description || "",
+      sourceCodeUrl: values.sourceCodeUrl,
+      liveUrl: values.liveUrl || "",
+      authorId: userId,
+      path: pathname,
+    });
+
+    if (pathname === `/showject/edit`) {
+      router.back();
+    } else {
+      router.push(`/home`);
+    }
+  };
+
+  return (
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex flex-col gap-5">
+        <FormField
+          control={form.control}
+          name="showject_photo"
+          render={({ field }) => (
+            <FormItem className="flex flex-col gap-1">
+              <FormLabel className="">
+                {field.value ? (
+                  <Image
+                    src={field.value}
+                    alt="profile photo"
+                    width={800}
+                    height={800}
+                    priority
+                    className="object-contain object-center w-full max-h-[400px] p-3 rounded-lg bg-light-3"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center w-full h-[400px] p-3 rounded-lg bg-light-3">
+                    <p className="text-lg text-dark-2">Click to Add Photo</p>
+                  </div>
+                )}
+              </FormLabel>
+              <FormControl className="">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  placeholder="Upload a photo"
+                  className="bg-transparent border-none hidden"
+                  onChange={(e) => handleImage(e, field.onChange)}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* ----------- TITLE ----------- */}
+        <FormField
+          control={form.control}
+          name="title"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-medium text-dark-4">
+                Showject Title
+              </FormLabel>
+              <FormControl>
+                <Input type="text" className="" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* ----------- DESCRIPTION ----------- */}
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-medium text-dark-4">
+                Showject Description
+              </FormLabel>
+              <FormControl>
+                <Textarea rows={10} className="" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* ----------- Source Code URL ----------- */}
+        <FormField
+          control={form.control}
+          name="sourceCodeUrl"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-medium text-dark-4">
+                Source Code URL
+              </FormLabel>
+              <FormControl>
+                <Input type="text" className="" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        {/* ----------- Live URL ----------- */}
+        <FormField
+          control={form.control}
+          name="liveUrl"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-medium text-dark-4">
+                Live URL
+              </FormLabel>
+              <FormControl>
+                <Input type="text" className="" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <Button
+          type="submit"
+          className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
+          {loadSpin && <CgSpinner size={22} className="animate-spin" />}
+          Share My Showject
+        </Button>
+      </form>
+    </Form>
+  );
 };
 
-export default CreateShowject;
+export default memo(CreateShowject);

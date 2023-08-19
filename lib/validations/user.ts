@@ -16,11 +16,3 @@ export const UserValidation = z.object({
   twitter: z.string().url().optional().or(z.literal("")),
   instagram: z.string().url().optional().or(z.literal("")),
 });
-
-export const ShowjectValidation = z.object({
-  showject_photo: z.string().url().nonempty(),
-  title: z.string().nonempty(),
-  description: z.string().optional(),
-  sourceCodeUrl: z.string().url().nonempty(),
-  liveUrl: z.string().url().optional().or(z.literal("")),
-});
