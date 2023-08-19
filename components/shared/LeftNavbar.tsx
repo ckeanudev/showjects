@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import MainNavLinks from "./MainNavLinks";
-import { memo } from "react";
 
 import { MdAddCircle, MdPersonSearch, MdHome } from "react-icons/md";
 import { BsFillCollectionFill } from "react-icons/bs";
