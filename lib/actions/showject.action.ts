@@ -49,3 +49,32 @@ export async function createShowject({
     throw new Error(`Failed to create showject: ${error.message}`);
   }
 }
+
+export async function fetchShowjects() {
+  try {
+    connectToDB();
+
+    const showjectsQuery = Showject.find()
+      .sort({ createdAt: "desc" })
+      .populate({ path: "author", model: User });
+    // .populate({
+    //   path: "comments",
+    //   populate: {
+    //     path: "author",
+    //     model: User,
+    //     select: "_id name username image",
+    //   },
+    // })
+    // .populate({
+    //   path: "loveCount",
+    //   model: User,
+    //   select: "_id name username image",
+    // });
+
+    const showjects = await showjectsQuery.exec();
+
+    return showjects;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch showjects: ${error.message}`);
+  }
+}

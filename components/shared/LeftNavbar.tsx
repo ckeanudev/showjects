@@ -1,3 +1,4 @@
+"use client";
 import ProfileCard from "../cards/ProfileCard";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +15,7 @@ interface Props {
   username: string;
 }
 
-const LeftNavbar = async ({
+const LeftNavbar = ({
   authUserId,
   dbUserId,
   profilePhoto,
@@ -33,13 +34,13 @@ const LeftNavbar = async ({
 
       <nav className="border-y-[1px] mt-5 py-5 flex flex-col justify-between gap-10 flex-1 overflow-auto">
         <div className="flex flex-col gap-4">
-          <Link href="/">
+          <Link href={`/profile/${dbUserId}`}>
             <ProfileCard
-              userId={dbUserId}
-              userAuthId={authUserId}
-              profileImg={profilePhoto}
-              name={name}
-              username={username}
+              userId={dbUserId || ""}
+              userAuthId={authUserId || ""}
+              profileImg={profilePhoto || ""}
+              name={name || ""}
+              username={username || ""}
             />
           </Link>
 

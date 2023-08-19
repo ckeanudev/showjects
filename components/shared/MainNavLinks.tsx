@@ -10,7 +10,7 @@ const MainNavLinks = () => {
   const pathname = usePathname();
 
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {leftNavLinks.map((link, i: number) => {
         const isActive =
           (pathname.includes(link.route) && link.route.length > 1) ||
@@ -19,6 +19,7 @@ const MainNavLinks = () => {
         return (
           <Link
             href={link.route}
+            key={i}
             className={`flex items-center gap-3 p-2.5 rounded-lg font-medium ${
               isActive
                 ? `text-light-1 bg-accent-2 `
@@ -32,7 +33,7 @@ const MainNavLinks = () => {
           </Link>
         );
       })}
-    </>
+    </div>
   );
 };
 
