@@ -8,6 +8,8 @@ const page = async () => {
   const user = await currentUser();
   if (!user) redirect("/");
 
+  console.log(user);
+
   const userInfo = await fetchUser(user.id);
   if (userInfo?.onboarded) redirect("/home");
 
@@ -16,10 +18,12 @@ const page = async () => {
     objectId: userInfo?._id,
     username: userInfo?.username || user?.username,
     name: userInfo?.name || `${user?.firstName} ${user?.lastName}` || "",
+    email: userInfo?.email || user?.emailAddresses[0].emailAddress || "",
     bio: userInfo?.bio || "",
     image: userInfo?.image || user?.imageUrl,
 
     job: userInfo?.job,
+    location: userInfo?.location,
     personalWebsite: userInfo?.personalWebsite,
     github: userInfo?.github,
     linkedIn: userInfo?.linkedIn,

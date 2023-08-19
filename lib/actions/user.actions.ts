@@ -8,9 +8,11 @@ interface Params {
   userId: string;
   username: string;
   name: string;
+  email: string;
   bio: string;
   image: string;
   job: string;
+  location: string;
   personalWebsite: string;
   github: string;
   linkedIn: string;
@@ -25,9 +27,11 @@ export async function updateUser({
   userId,
   username,
   name,
+  email,
   bio,
   image,
   job,
+  location,
   personalWebsite,
   github,
   linkedIn,
@@ -44,9 +48,11 @@ export async function updateUser({
       {
         username: username.toLowerCase(),
         name,
+        email,
         bio,
         image,
         job,
+        location,
         personalWebsite,
         github,
         linkedIn,

@@ -29,10 +29,12 @@ interface Props {
     id: string;
     objectId: string;
     username: string;
+    email: string;
     name: string;
     bio: string;
     image: string;
     job: string;
+    location: string;
     personalWebsite: string;
     github: string;
     linkedIn: string;
@@ -57,9 +59,11 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       profile_photo: user?.image || "",
       name: user?.name || "",
       username: user?.username || "",
+      email: user?.email || "",
       bio: user?.bio || "",
 
       job: user?.job || "",
+      location: user?.location || "",
       personalWebsite: user?.personalWebsite || "",
       github: user?.github || "",
       linkedIn: user?.linkedIn || "",
@@ -113,9 +117,11 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       userId: user.id,
       username: values.username,
       name: values.name,
+      email: values.email,
       bio: values.bio,
       image: values.profile_photo,
       job: values.job || "",
+      location: values.location || "",
       personalWebsite: values.personalWebsite || "",
       github: values.github || "",
       linkedIn: values.linkedIn || "",
@@ -248,6 +254,23 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           )}
         />
 
+        {/* ----------- LOCATION ----------- */}
+        <FormField
+          control={form.control}
+          name="location"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-medium text-dark-4">
+                Location
+              </FormLabel>
+              <FormControl>
+                <Input type="text" className="" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         {/* ----------- PERSONAL WEBSITE ----------- */}
         <FormField
           control={form.control}
@@ -361,4 +384,4 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
   );
 };
 
-export default memo(AccountProfile);
+export default AccountProfile;
