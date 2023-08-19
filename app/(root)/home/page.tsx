@@ -9,15 +9,15 @@ async function Page() {
 
   const result = await fetchShowjects();
 
-  console.log(result);
+  // console.log(result);
 
   return (
     <section className="min-h-[200vh] flex-1 bg-light-2 p-3">
       <h1 className="text-xl font-semibold text-dark-1 border-b-[1px] pb-2 mb-5">
-        Newsfeed
+        Home
       </h1>
 
-      <div className="max-w-[900px] mx-auto">
+      <div className="max-w-[740px] mx-auto">
         {result.length > 0 ? (
           result.map((data) => (
             <MainShowjectCard
@@ -31,6 +31,7 @@ async function Page() {
               liveUrl={data.liveUrl}
               comments={data.comments}
               loveCount={data.loveCount}
+              createdAt={data.createdAt}
             />
           ))
         ) : (
