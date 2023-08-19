@@ -29,7 +29,7 @@ const MainShowjectCard = ({
   createdAt,
 }: Props) => {
   return (
-    <article className="bg-light-1 rounded-xl p-5 flex flex-col gap-3">
+    <article className="bg-light-1 rounded-xl p-5 flex flex-col gap-3 mb-8 shadow-md">
       <div className="flex items-center gap-3">
         <Link href={`/profile/${author.id}`}>
           <Image
