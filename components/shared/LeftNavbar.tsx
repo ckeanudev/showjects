@@ -7,6 +7,9 @@ import { BiSolidLogOutCircle } from "react-icons/bi";
 import MainNavLinks from "./MainNavLinks";
 import { memo } from "react";
 
+import { MdAddCircle, MdPersonSearch, MdHome } from "react-icons/md";
+import { BsFillCollectionFill } from "react-icons/bs";
+
 interface Props {
   authUserId: string;
   dbUserId: string;
@@ -44,7 +47,18 @@ const LeftNavbar = ({
             />
           </Link>
 
-          {/* <MainNavLinks /> */}
+          <MainNavLinks href="/home">
+            <MdHome /> Home
+          </MainNavLinks>
+          <MainNavLinks href="/create-showject">
+            <MdAddCircle /> Create Showject
+          </MainNavLinks>
+          <MainNavLinks href="/top-showjects">
+            <BsFillCollectionFill /> Top Showjects
+          </MainNavLinks>
+          <MainNavLinks href="/search-developers">
+            <MdPersonSearch /> Search Developers
+          </MainNavLinks>
         </div>
 
         <SignedIn>
