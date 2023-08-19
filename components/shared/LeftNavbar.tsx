@@ -1,21 +1,26 @@
 import ProfileCard from "../cards/ProfileCard";
 import Image from "next/image";
-import { currentUser } from "@clerk/nextjs";
-import { fetchUser } from "@/lib/actions/user.actions";
-import { redirect } from "next/navigation";
 import Link from "next/link";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import { BiSolidLogOutCircle } from "react-icons/bi";
 import MainNavLinks from "./MainNavLinks";
 import { memo } from "react";
 
-const LeftNavbar = async () => {
-  const user = await currentUser();
-  if (!user) redirect("/");
+interface Props {
+  authUserId: string;
+  dbUserId: string;
+  profilePhoto: string;
+  name: string;
+  username: string;
+}
 
-  const userInfo = await fetchUser(user.id);
-  if (!userInfo?.onboarded) redirect("/onboarding");
-
+const LeftNavbar = async ({
+  authUserId,
+  dbUserId,
+  profilePhoto,
+  name,
+  username,
+}: Props) => {
   return (
     <section className="sticky top-0 left-0 h-screen bg-light-1 p-6 w-[320px] flex flex-col">
       <Image
@@ -30,11 +35,11 @@ const LeftNavbar = async () => {
         <div className="flex flex-col gap-4">
           <Link href="/">
             <ProfileCard
-              userId={userInfo._id}
-              userAuthId={userInfo.id}
-              profileImg={userInfo.image}
-              name={userInfo.name}
-              username={userInfo.username}
+              userId={dbUserId}
+              userAuthId={authUserId}
+              profileImg={profilePhoto}
+              name={name}
+              username={username}
             />
           </Link>
 
