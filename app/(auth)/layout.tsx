@@ -6,9 +6,9 @@ import { ClerkProvider } from "@clerk/nextjs";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Showjects | Showcase your project now",
+  title: "Showjects | Showcase personal your project now",
   description:
-    "Showcase your software development projects with the other developers on this platform where they can review your code and help you get better.",
+    "Showcase your personal software development projects with the other developers on this platform where they can review your code and help you get better.",
 };
 
 export default function RootLayout({

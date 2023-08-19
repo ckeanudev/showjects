@@ -9,9 +9,9 @@ import { currentUser } from "@clerk/nextjs";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Showjects | Showcase your project now",
+  title: "Showjects | Showcase your personal project now",
   description:
-    "Showcase your software development projects with the other developers on this platform where they can review your code and help you get better.",
+    "Showcase your personal software development projects with the other developers on this platform where they can review your code and help you get better.",
 };
 
 export default async function RootLayout({
@@ -20,7 +20,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const user = await currentUser();
-  console.log(user);
 
   return (
     <ClerkProvider>
