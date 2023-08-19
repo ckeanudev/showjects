@@ -3,6 +3,7 @@ import "../globals.css";
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import LeftNavbar from "@/components/shared/LeftNavbar";
+import RightNavbar from "@/components/shared/RightNavbar";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <main className="w-full flex">
             <LeftNavbar />
             {children}
+            <RightNavbar />
           </main>
         </body>
       </html>

@@ -17,7 +17,7 @@ const LeftNavbar = async () => {
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   return (
-    <section className="sticky top-0 left-0 h-screen bg-light-1 p-6 w-[420px] flex flex-col">
+    <section className="sticky top-0 left-0 h-screen bg-light-1 p-6 w-[320px] flex flex-col">
       <Image
         src="/images/logo-light.svg"
         alt="showjects logo"
