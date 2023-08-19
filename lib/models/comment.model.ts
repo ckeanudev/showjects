@@ -8,8 +8,7 @@ const commentSchema = new mongoose.Schema({
     default: Date.now,
   },
   showProjectId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Showject",
+    type: String,
   },
   parentId: {
     type: String,
