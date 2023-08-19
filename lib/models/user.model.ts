@@ -19,6 +19,18 @@ const userSchema = new mongoose.Schema({
       ref: "Showjects",
     },
   ],
+  respectCount: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
+  respectDevs: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   onboarded: {
     type: Boolean,
     default: false,
