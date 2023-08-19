@@ -27,8 +27,6 @@ export default async function RootLayout({
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  console.log(userInfo);
-
   return (
     <ClerkProvider>
       <html lang="en">

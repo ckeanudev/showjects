@@ -9,8 +9,6 @@ async function Page() {
 
   const result = await fetchShowjects();
 
-  // console.log(result);
-
   return (
     <section className="min-h-[200vh] flex-1 bg-light-2 p-3">
       <h1 className="text-xl font-semibold text-dark-1 border-b-[1px] pb-2 mb-5">

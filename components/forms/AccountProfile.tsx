@@ -128,15 +128,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       twitter: values.twitter || "",
       instagram: values.instagram || "",
       path: pathname,
-    })
-      .then((res) => {
-        console.log(`User added successfully`);
-        console.log(res);
-      })
-      .catch((error) => {
-        setLoadSpin(false);
-        console.log(error);
-      });
+    });
 
     if (pathname === `/profile/edit`) {
       router.back();
