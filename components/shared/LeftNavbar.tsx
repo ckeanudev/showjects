@@ -1,14 +1,13 @@
-"use client";
 import ProfileCard from "../cards/ProfileCard";
 import Image from "next/image";
 import Link from "next/link";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
-import { BiSolidLogOutCircle } from "react-icons/bi";
 import MainNavLinks from "./MainNavLinks";
 import { memo } from "react";
 
 import { MdAddCircle, MdPersonSearch, MdHome } from "react-icons/md";
 import { BsFillCollectionFill } from "react-icons/bs";
+import { BiSolidLogOutCircle } from "react-icons/bi";
 
 interface Props {
   authUserId: string;
@@ -32,10 +31,10 @@ const LeftNavbar = ({
         alt="showjects logo"
         width={140}
         height={140}
-        className=""
+        className="w-[130px] h-auto"
       />
 
-      <nav className="border-y-[1px] mt-5 py-5 flex flex-col justify-between gap-10 flex-1 overflow-auto">
+      <div className="border-y-[1px] mt-5 py-5 flex flex-col justify-between gap-10 flex-1 overflow-auto">
         <div className="flex flex-col gap-4">
           <Link href={`/profile/${authUserId}`}>
             <ProfileCard
@@ -48,16 +47,20 @@ const LeftNavbar = ({
           </Link>
 
           <MainNavLinks href="/home">
-            <MdHome /> Home
+            <MdHome size={22} />
+            Home
           </MainNavLinks>
           <MainNavLinks href="/create-showject">
-            <MdAddCircle /> Create Showject
+            <MdAddCircle size={22} />
+            Create Showject
           </MainNavLinks>
           <MainNavLinks href="/top-showjects">
-            <BsFillCollectionFill /> Top Showjects
+            <BsFillCollectionFill size={22} />
+            Top Showjects
           </MainNavLinks>
           <MainNavLinks href="/search-developers">
-            <MdPersonSearch /> Search Developers
+            <MdPersonSearch size={22} />
+            Search Developers
           </MainNavLinks>
         </div>
 
@@ -69,9 +72,9 @@ const LeftNavbar = ({
             </button>
           </SignOutButton>
         </SignedIn>
-      </nav>
+      </div>
     </section>
   );
 };
 
-export default memo(LeftNavbar);
+export default LeftNavbar;

@@ -1,7 +1,4 @@
 "use client";
-import { MdAddCircle, MdPersonSearch, MdHome } from "react-icons/md";
-import { BsFillCollectionFill } from "react-icons/bs";
-import { leftNavLinks } from "@/constant";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo } from "react";
@@ -20,7 +17,7 @@ const MainNavLinks = ({ href, children }: Props) => {
   return (
     <Link href={href || "/"}>
       <p
-        className={`flex items-center gap-3 p-2.5 rounded-lg font-medium ${
+        className={`flex items-center gap-3 p-2 rounded-lg font-medium ${
           isActive
             ? `text-light-1 bg-accent-2 `
             : `text-dark-1 bg-light-1 hover:bg-light-2`
