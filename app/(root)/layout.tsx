@@ -5,6 +5,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import LeftNavbar from "@/components/shared/LeftNavbar";
 import RightNavbar from "@/components/shared/RightNavbar";
 import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
+import { fetchUser } from "@/lib/actions/user.actions";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -20,6 +22,12 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const user = await currentUser();
+  if (!user) redirect("/sign-in");
+
+  const userInfo = await fetchUser(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
+
+  console.log(userInfo);
 
   return (
     <ClerkProvider>
