@@ -15,8 +15,8 @@ const Page = async ({ params }: { params: { userid: string } }) => {
 
   return (
     <section className="flex-1 min-h-screen bg-light-2 p-3">
-      <ProfileHeader />
-      <ProfileCollection />
+      <ProfileHeader userInfo={userInfo} />
+      <ProfileCollection userInfo={userInfo} />
     </section>
   );
 };
