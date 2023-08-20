@@ -74,12 +74,23 @@ export async function updateUser({
   }
 }
 
-// --------- Fetch user info --------- //
-export async function fetchUser(userId: string) {
+// --------- Fetch user info By Auth ID --------- //
+export async function fetchUserByAuthID(userId: string) {
   try {
     connectToDB();
 
     return await User.findOne({ id: userId });
+  } catch (error: any) {
+    throw new Error(`Failed to fecth user info: ${error.message}`);
+  }
+}
+
+// --------- Fetch user info By DB ID --------- //
+export async function fetchUserByDbId(userId: string) {
+  try {
+    connectToDB();
+
+    return await User.findOne({ _id: userId });
   } catch (error: any) {
     throw new Error(`Failed to fecth user info: ${error.message}`);
   }

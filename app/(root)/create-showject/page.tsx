@@ -1,5 +1,5 @@
 import CreateShowject from "@/components/forms/CreateShowject";
-import { fetchUser } from "@/lib/actions/user.actions";
+import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -7,7 +7,7 @@ async function Page() {
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
-  const userInfo = await fetchUser(user.id);
+  const userInfo = await fetchUserByAuthID(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   return (

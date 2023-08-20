@@ -6,7 +6,7 @@ import LeftNavbar from "@/components/shared/LeftNavbar";
 import RightNavbar from "@/components/shared/RightNavbar";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
-import { fetchUser } from "@/lib/actions/user.actions";
+import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -24,7 +24,7 @@ export default async function RootLayout({
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
-  const userInfo = await fetchUser(user.id);
+  const userInfo = await fetchUserByAuthID(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   return (
