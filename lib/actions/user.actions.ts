@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import User from "../models/user.model";
 import { connectToDB } from "../mongoose";
 import { FilterQuery, SortOrder } from "mongoose";
+import Showject from "../models/showject.model";
 
 interface Params {
   userId: string;
@@ -86,11 +87,14 @@ export async function fetchUserByAuthID(userId: string) {
 }
 
 // --------- Fetch user info By DB ID --------- //
-export async function fetchUserByDbId(userId: string) {
+export async function fetchUserByUsername(userId: string) {
   try {
     connectToDB();
 
-    return await User.findOne({ _id: userId });
+    return await User.findOne({ username: userId }).populate({
+      path: "showjectsCollection",
+      model: Showject,
+    });
   } catch (error: any) {
     throw new Error(`Failed to fecth user info: ${error.message}`);
   }
