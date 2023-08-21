@@ -4,6 +4,7 @@ import Showject from "../models/showject.model";
 import { connectToDB } from "../mongoose";
 import { FilterQuery, SortOrder } from "mongoose";
 import User from "../models/user.model";
+import Comment from "../models/comment.model";
 
 interface Params {
   image: string;
@@ -63,5 +64,34 @@ export async function fetchShowjects() {
     return showjects;
   } catch (error: any) {
     throw new Error(`Failed to fetch showjects: ${error.message}`);
+  }
+}
+
+export async function fetchShowjectInfo(showjectId: string) {
+  try {
+    connectToDB();
+
+    const showjectQuery = Showject.findById(showjectId)
+      .populate({
+        path: "loveCount",
+        model: User,
+        select: "_id id name username image",
+      })
+      .populate({
+        path: "author",
+        model: User,
+        select: "_id id name username image",
+      })
+      .populate({
+        path: "comments",
+        model: Comment,
+        select: "_id id name username image",
+      });
+
+    const showject = await showjectQuery.exec();
+
+    return showject;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch showject's info: ${error.message}`);
   }
 }
