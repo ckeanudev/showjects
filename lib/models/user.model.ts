@@ -33,6 +33,12 @@ const userSchema = new mongoose.Schema({
       ref: "User",
     },
   ],
+  communities: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Community",
+    },
+  ],
   onboarded: {
     type: Boolean,
     default: false,
