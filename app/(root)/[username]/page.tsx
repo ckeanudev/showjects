@@ -11,13 +11,15 @@ const Page = async ({ params }: { params: { username: string } }) => {
   const userInfo = await fetchUserByUsername(params.username);
   //   if (!userInfo?.onboarded)
 
-  console.log(userInfo);
-  console.log(params.username);
+  // console.log(userInfo);
+  // console.log(params.username);
 
   return (
-    <section className="flex-1 min-h-screen bg-light-2 p-3">
-      <ProfileHeader userInfo={userInfo} />
-      <ProfileCollection userInfo={userInfo} />
+    <section className="flex-1 min-h-screen  bg-light-2 p-3">
+      <div className="max-w-[800px] mx-auto px-3 py-10">
+        <ProfileHeader userInfo={userInfo} />
+        <ProfileCollection userInfo={userInfo} />
+      </div>
     </section>
   );
 };
