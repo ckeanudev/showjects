@@ -25,9 +25,8 @@ export async function addCommentToShowject({
   try {
     connectToDB();
 
-    console.log(`Insode DB`);
-
     if (commentToShowject) {
+      // If the comment is for the showject
       const createComment = await Comment.create({
         text,
         author: authorId,
@@ -41,6 +40,7 @@ export async function addCommentToShowject({
         },
       });
     } else {
+      // If the comment is for another comment
       const createComment = await Comment.create({
         text,
         author: authorId,
@@ -48,9 +48,11 @@ export async function addCommentToShowject({
         parentId: parentId,
       });
 
-      await Comment.findByIdAndUpdate(authorId, {
+      const savedCreateComment = await createComment.save();
+
+      await Comment.findByIdAndUpdate(parentId, {
         $push: {
-          children: createComment._id,
+          children: savedCreateComment._id,
         },
       });
     }

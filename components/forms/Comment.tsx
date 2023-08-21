@@ -44,8 +44,6 @@ const Comment = ({
   });
 
   const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
-    console.log(pathname);
-
     await addCommentToShowject({
       text: values.comment,
       showjectId: showjectId,
