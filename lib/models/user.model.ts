@@ -21,13 +21,13 @@ const userSchema = new mongoose.Schema({
       ref: "Showjects",
     },
   ],
-  respectCount: [
+  followers: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
   ],
-  respectDevs: [
+  following: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
