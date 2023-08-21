@@ -35,7 +35,7 @@ const LeftNavbar = ({
 
       <div className="border-y-[1px] mt-5 py-5 flex flex-col justify-between gap-10 flex-1 overflow-auto">
         <div className="flex flex-col gap-4">
-          <Link href={`/profile/${authUserId}`}>
+          <Link href={`/${username}`}>
             <ProfileCard
               userId={dbUserId || ""}
               userAuthId={authUserId || ""}

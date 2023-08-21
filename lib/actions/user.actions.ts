@@ -47,7 +47,7 @@ export async function updateUser({
     await User.findOneAndUpdate(
       { id: userId },
       {
-        username: username.toLowerCase(),
+        username: username.replace(/\s/g, "").toLowerCase(),
         name,
         email,
         bio,
