@@ -31,7 +31,7 @@ const MainShowjectCard = ({
   return (
     <article className="bg-light-1 rounded-xl p-5 flex flex-col gap-3 mb-8 shadow-md">
       <div className="flex items-center gap-3">
-        <Link href={`/profile/${author.id}`}>
+        <Link href={`/${author.username}`}>
           <Image
             src={author.image}
             alt={title}
@@ -41,7 +41,7 @@ const MainShowjectCard = ({
           />
         </Link>
         <div>
-          <Link href={`/profile/${author.id}`}>
+          <Link href={`/${author.username}`}>
             <p className="text-dark-1 font-semibold hover:underline">
               {author.name}
             </p>
