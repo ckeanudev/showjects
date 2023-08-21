@@ -37,8 +37,6 @@ const MainShowjectCard = ({
   createdAt,
   currentUserId,
 }: Props) => {
-  console.log(currentUserId);
-
   const converDateTime = (date: any) => {
     const months = [
       "Jan",
