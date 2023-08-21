@@ -92,6 +92,8 @@ export async function fetchUserByUsername(userId: string) {
     return await User.findOne({ username: userId }).populate({
       path: "showjectsCollection",
       model: Showject,
+      populate: { path: "author", model: User },
+      options: { sort: { createdAt: "desc" } },
     });
   } catch (error: any) {
     throw new Error(`Failed to fecth user info: ${error.message}`);

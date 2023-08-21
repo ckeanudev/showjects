@@ -9,11 +9,15 @@ const Page = async ({ params }: { params: { username: string } }) => {
   if (!user) redirect("/sign-in");
 
   const userInfo = await fetchUserByUsername(params.username);
+  console.log(userInfo.showjectsCollection);
 
   return (
-    <section className="flex-1 min-h-screen  bg-light-2 p-3">
+    <section className="flex-1 min-h-screen bg-light-2 p-3">
       <div className="max-w-[800px] mx-auto px-3 py-10">
-        <ProfileHeader userInfo={userInfo} />
+        <ProfileHeader currentUserId={user.id} userInfo={userInfo} />
+
+        <hr />
+
         <ProfileCollection userInfo={userInfo} />
       </div>
     </section>

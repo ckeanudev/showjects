@@ -1,3 +1,5 @@
+import MainShowjectCard from "../cards/MainShowjectCard";
+
 interface Props {
   userInfo: {
     _id: string;
@@ -15,14 +17,60 @@ interface Props {
     twitter: string;
     instagram: string;
     showjectsCollection: any;
-    respectCount: string[];
-    respectDevs: string[];
+    followers: string[];
+    following: string[];
     onboarded: boolean;
   };
 }
 
 const ProfileCollection = ({ userInfo }: Props) => {
-  return <div>ProfileCollection</div>;
+  const {
+    _id,
+    id,
+    username,
+    name,
+    image,
+    bio,
+    job,
+    location,
+    personalWebsite,
+    github,
+    linkedIn,
+    facebook,
+    twitter,
+    instagram,
+    showjectsCollection,
+    followers,
+    following,
+    onboarded,
+  } = userInfo;
+
+  return (
+    <div className="flex flex-col mt-5">
+      <h2 className=""></h2>
+
+      {showjectsCollection.length > 0 ? (
+        showjectsCollection.map((data: any) => {
+          return (
+            <MainShowjectCard
+              showjectId={data._id}
+              image={data.showjectImg}
+              title={data.title}
+              description={data.description}
+              author={data.author}
+              sourceCodeUrl={data.sourceCodeUrl}
+              liveUrl={data.liveUrl}
+              comments={data.comments}
+              loveCount={data.loveCount}
+              createdAt={data.createdAt}
+            />
+          );
+        })
+      ) : (
+        <p className="">No showject created</p>
+      )}
+    </div>
+  );
 };
 
 export default ProfileCollection;
