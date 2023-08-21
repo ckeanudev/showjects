@@ -63,9 +63,7 @@ export async function updateUser({
         onboarded: true,
       },
       { upsert: true }
-    ).then((res) => {
-      console.log(`Creating/Updating user info successfully!`);
-    });
+    );
 
     if (path === "/profile/edit") {
       revalidatePath(path);
