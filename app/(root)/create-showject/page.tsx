@@ -4,9 +4,11 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 async function Page() {
+  // ------- Fetch current logged in user's info from clerk and if not logged in the user will redirect to sign in page ------- //
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
+  // ------- Fetch user's info from DB and if not onboarded  the user will redirect to onboarding page ------- //
   const userInfo = await fetchUserByAuthID(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 

@@ -73,16 +73,6 @@ const CreateShowject = ({ userId }: Props) => {
 
     const blob = values.showject_photo;
 
-    // const hasImageChanged = isBase64Image(blob);
-
-    // if (hasImageChanged) {
-    //   const imgRes = await startUpload(files);
-
-    //   if (imgRes && imgRes[0].fileUrl) {
-    //     values.showject_photo = imgRes[0].fileUrl;
-    //   }
-    // }
-
     const imgRes = await startUpload(files);
 
     if (imgRes && imgRes[0].fileUrl) {

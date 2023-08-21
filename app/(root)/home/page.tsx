@@ -5,9 +5,11 @@ import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 async function Page() {
+  // ------- Fetch current logged in user's info from clerk and if not logged in the user will redirect to sign in page ------- //
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
+  // ------- Fetch all showjects from the DB ------- //
   const result = await fetchShowjects();
 
   return (

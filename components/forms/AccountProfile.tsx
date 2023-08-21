@@ -22,7 +22,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import Image from "next/image";
 import { updateUser } from "@/lib/actions/user.actions";
-import { error } from "console";
 
 interface Props {
   user: {

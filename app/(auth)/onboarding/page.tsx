@@ -1,13 +1,14 @@
-// import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import AccountProfile from "@/components/forms/AccountProfile";
 
 const page = async () => {
+  // ------- Fetch current logged in user's info from clerk and if not logged in sign in page ------- //
   const user = await currentUser();
-  if (!user) redirect("/");
+  if (!user) redirect("/sign-in");
 
+  // ------- Fetch user's info from DB and if user is onboarded he/she will redirect to homepage ------- //
   const userInfo = await fetchUserByAuthID(user.id);
   if (userInfo?.onboarded) redirect("/home");
 

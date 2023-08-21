@@ -4,11 +4,12 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 
 const page = async ({ params }: { params: { showjectId: string } }) => {
+  // ------- Fetch current logged in user's info from clerk and if not logged in the user will redirect to sign in page ------- //
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
+  // ------- Fetch showject info from the DB ------- //
   const showjectInfo = await fetchShowjectInfo(params.showjectId);
-  console.log(showjectInfo);
 
   return (
     <section className="flex-1 min-h-screen bg-light-2 p-3">

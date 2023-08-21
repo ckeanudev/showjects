@@ -37,6 +37,7 @@ const MainShowjectCard = ({
   createdAt,
   currentUserId,
 }: Props) => {
+  // ------- function to convert timestamp to actual date and time ------- //
   const converDateTime = (date: any) => {
     const months = [
       "Jan",
