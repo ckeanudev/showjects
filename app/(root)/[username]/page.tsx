@@ -9,10 +9,6 @@ const Page = async ({ params }: { params: { username: string } }) => {
   if (!user) redirect("/sign-in");
 
   const userInfo = await fetchUserByUsername(params.username);
-  //   if (!userInfo?.onboarded)
-
-  // console.log(userInfo);
-  // console.log(params.username);
 
   return (
     <section className="flex-1 min-h-screen  bg-light-2 p-3">
