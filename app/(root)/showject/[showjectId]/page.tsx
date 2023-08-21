@@ -1,3 +1,4 @@
+import CommentCard from "@/components/cards/CommentCard";
 import Comment from "@/components/forms/Comment";
 import { fetchShowjectInfo } from "@/lib/actions/showject.action";
 import { fetchUserByAuthID } from "@/lib/actions/user.actions";
@@ -16,7 +17,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
 
   // ------- Fetch showject info from the DB ------- //
   const showjectInfo = await fetchShowjectInfo(params.showjectId);
-  console.log(showjectInfo);
+  console.log(showjectInfo.comments);
 
   // ------- function to convert timestamp to actual date and time ------- //
   const converDateTime = (date: any) => {
@@ -124,9 +125,17 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
         <div className="">
           {showjectInfo.comments.length > 0
             ? showjectInfo.comments.map((comment: any) => (
-                <div className="" key={comment._id}>
-                  <p>{comment.text}</p>
-                </div>
+                <CommentCard
+                  key={comment._id}
+                  _id={comment._id}
+                  id={comment.id}
+                  name={comment.author.name}
+                  username={comment.author.username}
+                  image={comment.author.image}
+                  text={comment.text}
+                  children={comment.children}
+                  createdAt={comment.createdAt}
+                />
               ))
             : ""}
         </div>

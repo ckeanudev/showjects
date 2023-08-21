@@ -34,7 +34,6 @@ const Comment = ({
   commentUnderShowject,
 }: Props) => {
   const pathname = usePathname();
-  console.log(pathname);
 
   const form = useForm({
     resolver: zodResolver(CommentValidation),
@@ -70,9 +69,9 @@ const Comment = ({
                 <Image
                   src={currentUserImg}
                   alt="Profile Image"
-                  width={48}
-                  height={48}
-                  className="rounded-full object-cover"
+                  width={50}
+                  height={50}
+                  className="w-[44px] h-[44px] rounded-full object-cover"
                 />
               </FormLabel>
               <FormControl>
@@ -89,7 +88,7 @@ const Comment = ({
 
         <Button
           type="submit"
-          className="bg-accent-1 text-light-1 hover:bg-accent-1_hover p-2">
+          className="flex items-center gap-1 bg-accent-1 text-light-1 hover:bg-accent-1_hover px-4 py-2">
           Send <BiSolidSend size={24} />
         </Button>
       </form>
