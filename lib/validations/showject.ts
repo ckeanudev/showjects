@@ -7,3 +7,7 @@ export const ShowjectValidation = z.object({
   sourceCodeUrl: z.string().url().nonempty(),
   liveUrl: z.string().url().optional().or(z.literal("")),
 });
+
+export const CommentValidation = z.object({
+  comment: z.string().nonempty().min(3),
+});

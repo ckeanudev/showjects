@@ -1,4 +1,6 @@
+import Comment from "@/components/forms/Comment";
 import { fetchShowjectInfo } from "@/lib/actions/showject.action";
+import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { redirect } from "next/navigation";
@@ -8,8 +10,13 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
+  // ------- Fetch user's info from DB and if not onboarded  the user will redirect to onboarding page ------- //
+  const userInfo = await fetchUserByAuthID(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
+
   // ------- Fetch showject info from the DB ------- //
   const showjectInfo = await fetchShowjectInfo(params.showjectId);
+  console.log(showjectInfo);
 
   // ------- function to convert timestamp to actual date and time ------- //
   const converDateTime = (date: any) => {
@@ -97,13 +104,32 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
         <hr className="my-4" />
 
         <p className="text-xs text-dark-3">
-          {converDateTime(showjectInfo.createdAt)}
+          Published on {converDateTime(showjectInfo.createdAt)}
         </p>
-      </div>
 
-      {/* ------------ Comment Section ------------ */}
-      <div className="flex flex-col">
-        <div className=""></div>
+        <hr className="my-4" />
+
+        {/* ------------ Comment Section ------------ */}
+        <div className="flex flex-col">
+          <Comment
+            showjectId={showjectInfo?._id}
+            currentUserImg={userInfo?.image}
+            currentUserId={userInfo?._id}
+            commentUnderShowject={true}
+          />
+        </div>
+
+        <hr className="my-4" />
+
+        <div className="">
+          {showjectInfo.comments.length > 0
+            ? showjectInfo.comments.map((comment: any) => (
+                <div className="" key={comment._id}>
+                  <p>{comment.text}</p>
+                </div>
+              ))
+            : ""}
+        </div>
       </div>
     </section>
   );

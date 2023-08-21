@@ -85,7 +85,11 @@ export async function fetchShowjectInfo(showjectId: string) {
       .populate({
         path: "comments",
         model: Comment,
-        select: "_id id name username image",
+        populate: {
+          path: "author",
+          model: User,
+          select: `_id id name username image`,
+        },
       });
 
     const showject = await showjectQuery.exec();
