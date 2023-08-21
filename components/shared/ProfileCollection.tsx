@@ -1,6 +1,7 @@
 import MainShowjectCard from "../cards/MainShowjectCard";
 
 interface Props {
+  currentUserId: string;
   userInfo: {
     _id: string;
     id: string;
@@ -23,7 +24,7 @@ interface Props {
   };
 }
 
-const ProfileCollection = ({ userInfo }: Props) => {
+const ProfileCollection = ({ currentUserId, userInfo }: Props) => {
   const {
     _id,
     id,
@@ -63,6 +64,7 @@ const ProfileCollection = ({ userInfo }: Props) => {
               comments={data.comments}
               loveCount={data.loveCount}
               createdAt={data.createdAt}
+              currentUserId={currentUserId}
             />
           );
         })

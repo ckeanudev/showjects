@@ -1,5 +1,6 @@
 import MainShowjectCard from "@/components/cards/MainShowjectCard";
 import { fetchShowjects } from "@/lib/actions/showject.action";
+import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -30,6 +31,7 @@ async function Page() {
               comments={data.comments}
               loveCount={data.loveCount}
               createdAt={data.createdAt}
+              currentUserId={user.id}
             />
           ))
         ) : (
