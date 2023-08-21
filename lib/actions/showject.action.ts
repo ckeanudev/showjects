@@ -57,19 +57,6 @@ export async function fetchShowjects() {
     const showjectsQuery = Showject.find()
       .sort({ createdAt: "desc" })
       .populate({ path: "author", model: User });
-    // .populate({
-    //   path: "comments",
-    //   populate: {
-    //     path: "author",
-    //     model: User,
-    //     select: "_id name username image",
-    //   },
-    // })
-    // .populate({
-    //   path: "loveCount",
-    //   model: User,
-    //   select: "_id name username image",
-    // });
 
     const showjects = await showjectsQuery.exec();
 

@@ -7,12 +7,16 @@ const showjectSchema = new mongoose.Schema({
   author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   sourceCodeUrl: { type: String, required: true },
   liveUrl: String,
+  community: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Community",
+  },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  loveCount: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   createdAt: {
     type: Date,
     default: Date.now,
   },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
-  loveCount: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
 const Showject =
