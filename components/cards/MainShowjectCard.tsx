@@ -144,13 +144,13 @@ const MainShowjectCard = ({
       </Link>
 
       <div className="flex items-center gap-5 px-3 pt-3">
-        <button className="flex gap-2 items-center text-accent-2 font-medium">
+        <p className="flex gap-2 items-center text-accent-2 font-medium">
           <FaRegHeart size={22} /> {loveCount.length || 0}
-        </button>
-        <button className="flex gap-2 items-center text-accent-1 font-medium">
+        </p>
+        <p className="flex gap-2 items-center text-accent-1 font-medium">
           <FaRegCommentDots size={22} />
           {comments.length || 0}
-        </button>
+        </p>
       </div>
     </article>
   );
