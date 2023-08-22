@@ -157,7 +157,7 @@ const CreateShowject = ({ userId }: Props) => {
                 Showject Title
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -174,7 +174,7 @@ const CreateShowject = ({ userId }: Props) => {
                 Showject Description
               </FormLabel>
               <FormControl>
-                <Textarea rows={10} className="" {...field} />
+                <Textarea rows={10} className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -191,7 +191,7 @@ const CreateShowject = ({ userId }: Props) => {
                 Source Code URL
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -208,7 +208,7 @@ const CreateShowject = ({ userId }: Props) => {
                 Live URL
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

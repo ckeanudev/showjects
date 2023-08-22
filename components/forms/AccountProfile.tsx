@@ -189,7 +189,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             <FormItem className="flex flex-col">
               <FormLabel className="font-medium text-dark-4">Name</FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -204,7 +204,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             <FormItem className="flex flex-col">
               <FormLabel className="font-medium text-dark-4">Bio</FormLabel>
               <FormControl>
-                <Textarea rows={10} className="" {...field} />
+                <Textarea rows={10} className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -219,7 +219,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             <FormItem className="flex flex-col">
               <FormLabel className="font-medium text-dark-4">Job</FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -236,7 +236,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 Location
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -253,7 +253,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 Personal Website/Portfolio
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -270,7 +270,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 Github Link
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -287,7 +287,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 LinkedIn Link
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -304,7 +304,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 Facebook Link
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -321,7 +321,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 Twitter Link
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -338,7 +338,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                 Instagram Link
               </FormLabel>
               <FormControl>
-                <Input type="text" className="" {...field} />
+                <Input type="text" className="no-focus" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
