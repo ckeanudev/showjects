@@ -8,32 +8,15 @@ import {
   BsLinkedin,
   BsTwitter,
 } from "react-icons/bs";
+import FollowButton from "./FollowButton";
+import TempComponent from "./TempComponent";
 
 interface Props {
-  currentUserId: string;
-  userInfo: {
-    _id: string;
-    id: string;
-    username: string;
-    name: string;
-    image: string;
-    bio: string;
-    job: string;
-    location: string;
-    personalWebsite: string;
-    github: string;
-    linkedIn: string;
-    facebook: string;
-    twitter: string;
-    instagram: string;
-    showjectsCollection: any;
-    followers: string[];
-    following: string[];
-    onboarded: boolean;
-  };
+  currentUserDb: any;
+  userInfo: any;
 }
 
-const ProfileHeader = ({ currentUserId, userInfo }: Props) => {
+const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
   const {
     _id,
     id,
@@ -67,7 +50,7 @@ const ProfileHeader = ({ currentUserId, userInfo }: Props) => {
             className="w-[100px] h-[100px] rounded-full object-cover border"
           />
 
-          {currentUserId === id && (
+          {currentUserDb.id == userInfo.id && (
             <Link href="/edit-profile">
               <p className="absolute flex items-center justify-center bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] bg-accent-1 hover:bg-accent-1_hover font-medium text-light-1 text-sm w-[100px] p-1 rounded-md">
                 Edit Profile
@@ -75,10 +58,12 @@ const ProfileHeader = ({ currentUserId, userInfo }: Props) => {
             </Link>
           )}
 
-          {currentUserId !== id && (
-            <p className="absolute flex items-center justify-center bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] bg-accent-1 hover:bg-accent-1_hover font-medium text-light-1 text-sm w-[100px] p-1 rounded-md">
-              Follow
-            </p>
+          {currentUserDb.id !== userInfo.id && (
+            <FollowButton
+              currentUserDbId={currentUserDb._id}
+              userPageDbId={userInfo._id}
+              userFollowers={userInfo.followers}
+            />
           )}
         </div>
 

@@ -37,11 +37,9 @@ const LeftNavbar = ({
         <div className="flex flex-col gap-4">
           <Link href={`/${username}`}>
             <ProfileCard
-              userId={dbUserId || ""}
-              userAuthId={authUserId || ""}
-              profileImg={profilePhoto || ""}
-              name={name || ""}
-              username={username || ""}
+              profileImg={profilePhoto}
+              name={name}
+              username={username}
             />
           </Link>
 

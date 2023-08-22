@@ -4,20 +4,12 @@ import { memo } from "react";
 import { usePathname } from "next/navigation";
 
 interface Props {
-  userId: string;
-  userAuthId: string;
   profileImg: string;
   name: string;
   username: string;
 }
 
-const ProfileCard = ({
-  userId,
-  userAuthId,
-  profileImg,
-  name,
-  username,
-}: Props) => {
+const ProfileCard = ({ profileImg, name, username }: Props) => {
   const pathname = usePathname();
 
   return (

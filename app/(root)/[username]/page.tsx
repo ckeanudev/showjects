@@ -12,13 +12,16 @@ const Page = async ({ params }: { params: { username: string } }) => {
   const user = await currentUser();
   if (!user) redirect("/sign-in");
 
+  const userInfo = await fetchUserByAuthID(user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
+
   // ------- Fetch userpage's info from the DB ------- //
   const userPageInfo = await fetchUserByUsername(params.username);
 
   return (
     <section className="flex-1 min-h-screen bg-light-2 p-3">
       <div className="max-w-[800px] mx-auto px-3 py-10">
-        <ProfileHeader currentUserId={user.id} userInfo={userPageInfo} />
+        <ProfileHeader currentUserDb={userInfo} userInfo={userPageInfo} />
 
         <hr />
 

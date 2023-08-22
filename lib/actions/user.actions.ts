@@ -99,3 +99,42 @@ export async function fetchUserByUsername(userId: string) {
     throw new Error(`Failed to fecth user info: ${error.message}`);
   }
 }
+
+export async function followUser(
+  currentUserDbId: string,
+  userDbId: string,
+  follow: boolean,
+  path: string
+) {
+  try {
+    connectToDB();
+
+    // User Page Info
+    const user = await User.findById(userDbId);
+
+    // Current Logged In User
+    const currentUser = await User.findById(currentUserDbId);
+
+    if (follow) {
+      // Follow
+      user.followers.push(currentUserDbId);
+      currentUser.following.push(userDbId);
+    } else {
+      // Unfollow
+      const indexTemp1 = user.followers.indexOf(currentUserDbId);
+      console.log(indexTemp1);
+      user.followers.splice(indexTemp1, 1);
+
+      const indexTemp2 = currentUser.following.indexOf(userDbId);
+      console.log(indexTemp2);
+      currentUser.following.splice(indexTemp2, 1);
+    }
+
+    await user.save();
+    await currentUser.save();
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`Failed to follow user: ${error.message}`);
+  }
+}
