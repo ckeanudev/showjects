@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
+
 import Image from "next/image";
 import { updateUser } from "@/lib/actions/user.actions";
 
@@ -57,10 +58,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     defaultValues: {
       profile_photo: user?.image || "",
       name: user?.name || "",
-      username: user?.username || "",
       email: user?.email || "",
       bio: user?.bio || "",
-
       job: user?.job || "",
       location: user?.location || "",
       personalWebsite: user?.personalWebsite || "",
@@ -113,7 +112,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     // TODO: Create or Update user profile
     await updateUser({
       userId: user.id,
-      username: values.username,
+      username: user?.username,
       name: values.name,
       email: values.email,
       bio: values.bio,
@@ -189,23 +188,6 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel className="font-medium text-dark-4">Name</FormLabel>
-              <FormControl>
-                <Input type="text" className="" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* ----------- USERNAME ----------- */}
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Username
-              </FormLabel>
               <FormControl>
                 <Input type="text" className="" {...field} />
               </FormControl>
