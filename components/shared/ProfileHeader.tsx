@@ -162,6 +162,15 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
               ""
             )}
           </div>
+
+          <div className="flex items-center flex-warp gap-1">
+            <p className="text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
+              {job}
+            </p>
+            <p className="text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
+              {location}
+            </p>
+          </div>
         </div>
       </div>
 
