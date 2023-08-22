@@ -59,15 +59,16 @@ const CommentCard = ({
   };
 
   return (
-    <article className="flex items-center gap-2">
+    <article className="flex items-center gap-2 mb-5">
       <Image
         src={image}
         alt={`${name}'s pic`}
         width={50}
         height={50}
-        className="w-[44px] h-[44px] rounded-full object-cover"
+        className="max-w-[44px] max-h-[44px] rounded-full object-cover border"
       />
-      <div className="flex-1">
+
+      <div className="flex-1 ">
         <div className="bg-light-1 p-3 rounded-md ">
           <p className="text-dark-1 text-base font-semibold" mb-1>
             {name}

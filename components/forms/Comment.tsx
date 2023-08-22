@@ -65,32 +65,37 @@ const Comment = ({
           name="comment"
           render={({ field }) => (
             <FormItem className="flex flex-1 gap-2 items-center">
-              <FormLabel>
+              <FormLabel className="">
                 <Image
                   src={currentUserImg}
                   alt="Profile Image"
                   width={50}
                   height={50}
-                  className="w-[44px] h-[44px] rounded-full object-cover"
+                  className="max-w-[44px] max-h-[44px] rounded-full object-cover border"
                 />
               </FormLabel>
-              <FormControl>
-                <Textarea
-                  rows={1}
-                  className="bg-transparent relative resize-none"
-                  placeholder="Comment..."
-                  {...field}></Textarea>
-              </FormControl>
-              <FormMessage />
+
+              <div className="flex-1 flex border pb-2 pr-2 rounded-md items-end">
+                <div className="flex-1 ">
+                  <FormControl>
+                    <Textarea
+                      rows={1}
+                      className="bg-transparent relative resize-none border-none no-focus"
+                      placeholder="Comment..."
+                      {...field}></Textarea>
+                  </FormControl>
+                  <FormMessage className="pl-2 pt-1" />
+                </div>
+
+                <Button
+                  type="submit"
+                  className="flex items-center gap-1 bg-accent-1 text-light-1 hover:bg-accent-1_hover px-4 py-2">
+                  Send <BiSolidSend size={24} />
+                </Button>
+              </div>
             </FormItem>
           )}
         />
-
-        <Button
-          type="submit"
-          className="flex items-center gap-1 bg-accent-1 text-light-1 hover:bg-accent-1_hover px-4 py-2">
-          Send <BiSolidSend size={24} />
-        </Button>
       </form>
     </Form>
   );
