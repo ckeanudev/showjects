@@ -1,5 +1,6 @@
 import CommentCard from "@/components/cards/CommentCard";
 import Comment from "@/components/forms/Comment";
+import ShowjectLoveButton from "@/components/shared/ShowjectInfoHeader";
 import { fetchShowjectInfo } from "@/lib/actions/showject.action";
 import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
@@ -17,7 +18,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
 
   // ------- Fetch showject info from the DB ------- //
   const showjectInfo = await fetchShowjectInfo(params.showjectId);
-  console.log(showjectInfo.comments);
+  console.log(showjectInfo);
 
   // ------- function to convert timestamp to actual date and time ------- //
   const converDateTime = (date: any) => {
@@ -60,6 +61,34 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
   return (
     <section className="flex-1 min-h-screen bg-light-2 p-3">
       <div className="max-w-[800px] mx-auto px-3 py-10">
+        <div className="flex items-center justify-between mb-5">
+          <div className="flex items-center gap-3">
+            <Image
+              src={showjectInfo.author.image}
+              alt="Author's Pic"
+              width={40}
+              height={40}
+              className=" w-[50px] h-[50px] border rounded-full"
+            />
+
+            <div className="">
+              <p className="font-semibold text-dark-1">
+                {showjectInfo.author.name}
+              </p>
+              <p className="text-sm text-dark-3">
+                @{showjectInfo.author.username}
+              </p>
+            </div>
+          </div>
+
+          <ShowjectLoveButton
+            authorId={showjectInfo.author._id}
+            showjectId={showjectInfo._id}
+            showjectLoveCount={showjectInfo.loveCount}
+            currentDbUser={userInfo._id}
+          />
+        </div>
+
         <Image
           src={showjectInfo.showjectImg}
           alt={`${showjectInfo.title}'s pic`}

@@ -73,11 +73,6 @@ export async function fetchShowjectInfo(showjectId: string) {
 
     const showjectQuery = Showject.findById(showjectId)
       .populate({
-        path: "loveCount",
-        model: User,
-        select: "_id id name username image",
-      })
-      .populate({
         path: "author",
         model: User,
         select: "_id id name username image",
@@ -97,5 +92,32 @@ export async function fetchShowjectInfo(showjectId: string) {
     return showject;
   } catch (error: any) {
     throw new Error(`Failed to fetch showject's info: ${error.message}`);
+  }
+}
+
+export async function reactLoveShowject(
+  userId: string,
+  showjectId: string,
+  reactLove: boolean,
+  path: string
+) {
+  try {
+    connectToDB();
+
+    const showject = await Showject.findById(showjectId);
+
+    if (reactLove) {
+      showject.loveCount.push(userId);
+    } else {
+      const indexTemp = showject.loveCount.indexOf(userId);
+      console.log(indexTemp);
+      showject.loveCount.splice(indexTemp, 1);
+    }
+
+    await showject.save();
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`Failed to react love: ${error.message}`);
   }
 }
