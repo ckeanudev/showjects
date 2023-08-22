@@ -3,7 +3,6 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ChangeEvent, useState, memo } from "react";
-import { isBase64Image } from "@/lib/utils";
 import { usePathname, useRouter } from "next/navigation";
 import { useUploadThing } from "@/lib/uploadthing";
 import { CgSpinner } from "react-icons/cg";
@@ -215,12 +214,22 @@ const CreateShowject = ({ userId }: Props) => {
           )}
         />
 
-        <Button
-          type="submit"
-          className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
-          {loadSpin && <CgSpinner size={22} className="animate-spin" />}
-          Share My Showject
-        </Button>
+        {!loadSpin && (
+          <Button
+            type="submit"
+            className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
+            Share My Showject
+          </Button>
+        )}
+
+        {loadSpin && (
+          <Button
+            disabled
+            className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5 cursor-default">
+            <CgSpinner size={22} className="animate-spin" />
+            Share My Showject
+          </Button>
+        )}
       </form>
     </Form>
   );

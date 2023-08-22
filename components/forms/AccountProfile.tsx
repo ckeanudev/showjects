@@ -345,12 +345,22 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           )}
         />
 
-        <Button
-          type="submit"
-          className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
-          {loadSpin && <CgSpinner size={22} className="animate-spin" />}
-          {btnTitle}
-        </Button>
+        {!loadSpin && (
+          <Button
+            type="submit"
+            className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
+            {btnTitle}
+          </Button>
+        )}
+
+        {loadSpin && (
+          <Button
+            disabled
+            className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5 cursor-default">
+            <CgSpinner size={22} className="animate-spin" />
+            {btnTitle}
+          </Button>
+        )}
       </form>
     </Form>
   );

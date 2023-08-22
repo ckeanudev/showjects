@@ -2,6 +2,8 @@
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CgSpinner } from "react-icons/cg";
+import { useState, memo } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -34,6 +36,7 @@ const Comment = ({
   commentUnderShowject,
 }: Props) => {
   const pathname = usePathname();
+  const [loadSpin, setLoadSpin] = useState<boolean>(false);
 
   const form = useForm({
     resolver: zodResolver(CommentValidation),
@@ -43,6 +46,8 @@ const Comment = ({
   });
 
   const onSubmit = async (values: z.infer<typeof CommentValidation>) => {
+    setLoadSpin(true);
+
     await addCommentToShowject({
       text: values.comment,
       showjectId: showjectId,
@@ -52,6 +57,7 @@ const Comment = ({
       path: pathname,
     });
 
+    setLoadSpin(false);
     form.reset();
   };
 
@@ -87,11 +93,21 @@ const Comment = ({
                   <FormMessage className="pl-2 pt-1" />
                 </div>
 
-                <Button
-                  type="submit"
-                  className="flex items-center gap-1 bg-accent-1 text-light-1 hover:bg-accent-1_hover px-4 py-2">
-                  Send <BiSolidSend size={24} />
-                </Button>
+                {!loadSpin && (
+                  <Button
+                    type="submit"
+                    className="flex items-center gap-1 bg-accent-1 text-light-1 hover:bg-accent-1_hover px-4 py-2">
+                    Send <BiSolidSend size={24} />
+                  </Button>
+                )}
+
+                {loadSpin && (
+                  <Button
+                    disabled
+                    className="flex items-center gap-1 bg-accent-1_hover cursor-default text-light-1 hover:bg-accent-1_hover px-4 py-2">
+                    Send <CgSpinner size={22} className="animate-spin" />
+                  </Button>
+                )}
               </div>
             </FormItem>
           )}
