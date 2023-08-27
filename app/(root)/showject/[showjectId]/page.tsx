@@ -5,6 +5,7 @@ import { fetchShowjectInfo } from "@/lib/actions/showject.action";
 import { fetchUserByAuthID } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const page = async ({ params }: { params: { showjectId: string } }) => {
@@ -63,18 +64,22 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
       <div className="max-w-[800px] mx-auto px-3 py-10">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
-            <Image
-              src={showjectInfo.author.image}
-              alt="Author's Pic"
-              width={40}
-              height={40}
-              className=" w-[50px] h-[50px] border rounded-full"
-            />
+            <Link href={`/${showjectInfo.author.username}`}>
+              <Image
+                src={showjectInfo.author.image}
+                alt="Author's Pic"
+                width={40}
+                height={40}
+                className=" w-[50px] h-[50px] border rounded-full"
+              />
+            </Link>
 
             <div className="">
-              <p className="font-semibold text-dark-1">
-                {showjectInfo.author.name}
-              </p>
+              <Link href={`/${showjectInfo.author.username}`}>
+                <p className="font-semibold text-dark-1 hover:underline">
+                  {showjectInfo.author.name}
+                </p>
+              </Link>
               <p className="text-sm text-dark-3">
                 @{showjectInfo.author.username}
               </p>
