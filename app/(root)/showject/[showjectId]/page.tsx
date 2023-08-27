@@ -37,7 +37,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
       "Dec",
     ];
 
-    const month = months[date.getMonth() - 1];
+    const month = months[date.getMonth()];
 
     const day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
 
@@ -45,7 +45,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
 
     if (date.getHours() > 12) {
       let tempData = date.getHours() - 12;
-      hour = tempData > 9 ? date.getHours() : "0" + date.getHours();
+      hour = tempData > 9 ? date.getHours() : "0" + tempData;
     } else {
       hour = date.getHours() > 9 ? date.getHours() : "0" + date.getHours();
     }

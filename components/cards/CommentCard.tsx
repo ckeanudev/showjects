@@ -37,7 +37,7 @@ const CommentCard = ({
       "Dec",
     ];
 
-    const month = months[date.getMonth() - 1];
+    const month = months[date.getMonth()];
 
     const day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
 
