@@ -54,6 +54,7 @@ const ProfileCollection = ({ currentUserId, userInfo }: Props) => {
         showjectsCollection.map((data: any) => {
           return (
             <MainShowjectCard
+              key={data._id}
               showjectId={data._id}
               image={data.showjectImg}
               title={data.title}
