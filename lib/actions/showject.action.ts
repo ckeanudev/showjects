@@ -7,12 +7,13 @@ import User from "../models/user.model";
 import Comment from "../models/comment.model";
 
 interface Params {
+  showjectId?: string;
   image: string;
   title: string;
   description: string;
   sourceCodeUrl: string;
   liveUrl: string;
-  authorId: string;
+  authorId?: string;
   path: string;
 }
 
@@ -43,6 +44,33 @@ export async function createShowject({
       $push: {
         showjectsCollection: createdShowject._id,
       },
+    });
+
+    revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`Failed to create showject: ${error.message}`);
+  }
+}
+
+export async function updateShowject({
+  showjectId,
+  image,
+  title,
+  description,
+  sourceCodeUrl,
+  liveUrl,
+  path,
+}: Params) {
+  try {
+    connectToDB();
+
+    // Update showject's info to the DB
+    await Showject.findByIdAndUpdate(showjectId, {
+      title: title,
+      showjectImg: image,
+      description: description,
+      sourceCodeUrl: sourceCodeUrl,
+      liveUrl: liveUrl,
     });
 
     revalidatePath(path);

@@ -20,13 +20,25 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "../ui/textarea";
 import Image from "next/image";
 import { ShowjectValidation } from "@/lib/validations/showject";
-import { createShowject } from "@/lib/actions/showject.action";
+import { updateShowject } from "@/lib/actions/showject.action";
 
 interface Props {
-  userId: string;
+  _id: string;
+  title: string;
+  showjectImg: string;
+  description: string;
+  sourceCodeUrl: string;
+  liveUrl: string;
 }
 
-const CreateShowject = ({ userId }: Props) => {
+const UpdateShowject = ({
+  _id,
+  title,
+  showjectImg,
+  description,
+  sourceCodeUrl,
+  liveUrl,
+}: Props) => {
   const [loadSpin, setLoadSpin] = useState<boolean>(false);
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
@@ -36,11 +48,11 @@ const CreateShowject = ({ userId }: Props) => {
   const form = useForm({
     resolver: zodResolver(ShowjectValidation),
     defaultValues: {
-      showject_photo: "",
-      title: "",
-      description: "",
-      sourceCodeUrl: "",
-      liveUrl: "",
+      showject_photo: showjectImg || "",
+      title: title || "",
+      description: description || "",
+      sourceCodeUrl: sourceCodeUrl || "",
+      liveUrl: liveUrl || "",
     },
   });
 
@@ -84,26 +96,21 @@ const CreateShowject = ({ userId }: Props) => {
       description: values.description || "",
       sourceCodeUrl: values.sourceCodeUrl,
       liveUrl: values.liveUrl || "",
-      authorId: userId,
       path: pathname,
     });
 
-    // TODO: Create or Update showject
-    await createShowject({
+    // TODO: Update showject
+    await updateShowject({
+      showjectId: _id,
       image: values.showject_photo,
       title: values.title,
       description: values.description || "",
       sourceCodeUrl: values.sourceCodeUrl,
       liveUrl: values.liveUrl || "",
-      authorId: userId,
       path: pathname,
     });
 
-    if (pathname === `/showject/edit`) {
-      router.back();
-    } else {
-      router.push(`/home`);
-    }
+    router.push(`/showject/${_id}`);
   };
 
   return (
@@ -218,7 +225,7 @@ const CreateShowject = ({ userId }: Props) => {
           <Button
             type="submit"
             className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
-            Share My Showject
+            Save My Showject Info
           </Button>
         )}
 
@@ -227,7 +234,7 @@ const CreateShowject = ({ userId }: Props) => {
             disabled
             className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5 cursor-default">
             <CgSpinner size={22} className="animate-spin" />
-            Share My Showject
+            Save My Showject Info
           </Button>
         )}
       </form>
@@ -235,4 +242,4 @@ const CreateShowject = ({ userId }: Props) => {
   );
 };
 
-export default memo(CreateShowject);
+export default memo(UpdateShowject);
