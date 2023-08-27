@@ -127,7 +127,7 @@ const CreateShowject = ({ userId }: Props) => {
                     className="object-contain object-center w-full max-h-[400px] p-3 rounded-lg bg-light-3 cursor-pointer"
                   />
                 ) : (
-                  <div className="flex items-center justify-center w-full h-[400px] p-3 rounded-lg bg-light-3">
+                  <div className="flex items-center justify-center w-full h-[400px] p-3 rounded-lg bg-light-3 cursor-pointer">
                     <p className="text-lg text-dark-2">Click to Add Photo</p>
                   </div>
                 )}

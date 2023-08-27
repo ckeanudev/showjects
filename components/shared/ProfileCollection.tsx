@@ -1,3 +1,4 @@
+import Link from "next/link";
 import MainShowjectCard from "../cards/MainShowjectCard";
 
 interface Props {
@@ -70,7 +71,13 @@ const ProfileCollection = ({ currentUserId, userInfo }: Props) => {
           );
         })
       ) : (
-        <p className="">No showject created</p>
+        <div className="w-full flex items-center justify-center">
+          <Link href="/create-showject">
+            <button className="bg-accent-2 hover:bg-accent-2_hover text-light-1 py-1.5 px-3 font-medium rounded-md">
+              Create your first showject
+            </button>
+          </Link>
+        </div>
       )}
     </div>
   );
