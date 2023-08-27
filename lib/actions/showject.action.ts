@@ -168,7 +168,7 @@ export async function deleteShowject(
 
     console.log(`Delete successfully!`);
 
-    // revalidatePath(path);
+    revalidatePath(path);
   } catch (error: any) {
     throw new Error(`Failed to delete showject: ${error.message}`);
   }
