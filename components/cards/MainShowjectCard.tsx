@@ -120,6 +120,13 @@ const MainShowjectCard = ({
                   Edit
                 </Link>
               )}
+              {currentUserId === author.id && (
+                <Link
+                  href={`/delete-showject/${showjectId}`}
+                  className="text-dark-2 hover:bg-light-2 p-1 rounded text-sm font-medium">
+                  Delete
+                </Link>
+              )}
             </PopoverContent>
           </div>
         </Popover>

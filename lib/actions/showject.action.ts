@@ -149,3 +149,27 @@ export async function reactLoveShowject(
     throw new Error(`Failed to react love: ${error.message}`);
   }
 }
+
+export async function deleteShowject(
+  showjectId: string,
+  userId: string,
+  path: string
+) {
+  try {
+    connectToDB();
+
+    await Showject.deleteOne({ _id: showjectId });
+
+    await User.findByIdAndUpdate(userId, {
+      $pull: {
+        showjectsCollection: showjectId,
+      },
+    });
+
+    console.log(`Delete successfully!`);
+
+    // revalidatePath(path);
+  } catch (error: any) {
+    throw new Error(`Failed to delete showject: ${error.message}`);
+  }
+}
