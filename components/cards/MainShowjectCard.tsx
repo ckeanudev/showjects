@@ -107,7 +107,7 @@ const MainShowjectCard = ({
             <PopoverContent className="absolute right-0 w-[120px] flex flex-col gap-2 p-1.5">
               {currentUserId !== author.id && (
                 <Link
-                  href={`/`}
+                  href={`/report-showject/${showjectId}`}
                   className="text-dark-2 hover:bg-light-2 p-1 rounded text-sm font-medium">
                   Report
                 </Link>
@@ -115,7 +115,7 @@ const MainShowjectCard = ({
 
               {currentUserId === author.id && (
                 <Link
-                  href={`/`}
+                  href={`/edit-showject/${showjectId}`}
                   className="text-dark-2 hover:bg-light-2 p-1 rounded text-sm font-medium">
                   Edit
                 </Link>
