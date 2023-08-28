@@ -77,17 +77,17 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
                 alt="Author's Pic"
                 width={40}
                 height={40}
-                className=" w-[50px] h-[50px] border rounded-full"
+                className=" w-[36px] md:w-[50px] h-[36px] md:h-[50px] object-cover border rounded-full"
               />
             </Link>
 
             <div className="">
               <Link href={`/${showjectInfo.author.username}`}>
-                <p className="font-semibold text-dark-1 hover:underline">
+                <p className="font-semibold text-dark-1 hover:underline text-sm md:text-base ">
                   {showjectInfo.author.name}
                 </p>
               </Link>
-              <p className="text-sm text-dark-3">
+              <p className="text-xs md:text-sm text-dark-3">
                 @{showjectInfo.author.username}
               </p>
             </div>
@@ -141,20 +141,20 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
           alt={`${showjectInfo.title}'s pic`}
           width={700}
           height={700}
-          className="w-full max-h-[400px] rounded-lg bg-light-3 object-contain mb-3"
+          className="w-full max-h-[220px] sm:max-h-[280px] md:max-h-[400px] rounded-lg bg-light-3 object-contain mb-3"
         />
 
-        <h2 className="text-2xl font-bold text-dark-1 mb-1">
+        <h2 className="text-xl md:text-2xl font-bold text-dark-1 mb-1">
           {showjectInfo.title}
         </h2>
 
-        <p className="text-sm text-dark-3 font-medium">
+        <p className="text-xs md:text-sm text-dark-3 font-medium">
           {showjectInfo.description}
         </p>
 
-        <div className="mt-4 flex flex-col gap-1">
+        <div className="mt-4 flex flex-col gap-1.5">
           {showjectInfo.liveUrl != "" && (
-            <p className="text-sm font-medium text-dark-2">
+            <p className="text-xs md:text-sm bg-light-1 p-1 rounded font-medium text-dark-2">
               Live URL:{" "}
               <a
                 className="text-accent-1 hover:text-accent-1_hover"
@@ -166,7 +166,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
             </p>
           )}
 
-          <p className="text-sm font-medium text-dark-2">
+          <p className="text-xs md:text-sm bg-light-1 p-1 rounded font-medium text-dark-2">
             Source Code URL:{" "}
             <a
               className="text-accent-2 hover:text-accent-2_hover"

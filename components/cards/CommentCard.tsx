@@ -65,7 +65,7 @@ const CommentCard = ({
         alt={`${name}'s pic`}
         width={50}
         height={50}
-        className="max-w-[44px] max-h-[44px] rounded-full object-cover border"
+        className="max-w-[34px] sm:max-w-[44px] max-h-[30px] sm:max-h-[44px] rounded-full object-cover border"
       />
 
       <div className="flex-1 ">

@@ -77,7 +77,7 @@ const Comment = ({
                   alt="Profile Image"
                   width={50}
                   height={50}
-                  className="max-w-[44px] max-h-[44px] rounded-full object-cover border"
+                  className="hidden sm:flex max-w-[44px] max-h-[44px] rounded-full object-cover border"
                 />
               </FormLabel>
 
