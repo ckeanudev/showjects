@@ -44,6 +44,7 @@ export default async function RootLayout({
             <RightNavbar
               authUserId={user?.id || userInfo?.id}
               dbUserId={userInfo?._id}
+              followingList={userInfo?.following}
             />
 
             <MobileNavbar currentUsername={userInfo?.username} />

@@ -152,3 +152,19 @@ export async function fetchSearchDev(username: string) {
     throw new Error(`Failed to search devs: ${error.message}`);
   }
 }
+
+export async function fetchAllUsers(dbUserId: any) {
+  try {
+    connectToDB();
+
+    const usersQuery = User.find({ _id: { $nin: dbUserId } }).sort({
+      followers: -1,
+    });
+
+    const userList = await usersQuery.exec();
+
+    return userList;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch all users: ${error.message}`);
+  }
+}
