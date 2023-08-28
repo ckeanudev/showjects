@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { fetchSearchDev } from "@/lib/actions/user.actions";
 import { Input } from "../ui/input";
+import SearchedDevCard from "../cards/SearchedDevCard";
 
 const SearchDevelopers = () => {
   const pathname = usePathname();
@@ -61,7 +62,7 @@ const SearchDevelopers = () => {
                   </FormControl>
 
                   {!loadSpin && (
-                    <Button className="bg-accent-1 text-light-1 lex items-center gap-1 ">
+                    <Button className="bg-accent-1 hover:bg-accent-1_hover text-light-1 lex items-center gap-1 ">
                       Search <CgSearch size={20} />{" "}
                     </Button>
                   )}
@@ -81,7 +82,13 @@ const SearchDevelopers = () => {
       </Form>
 
       <div className="mt-5">
-        {resultSearch.length > 0 ? "Not Empty" : "Empty"}
+        {resultSearch.length > 0 ? (
+          resultSearch.map((data: any) => (
+            <SearchedDevCard userInfo={data} key={data._id} />
+          ))
+        ) : (
+          <p className="text-center">No Results</p>
+        )}
       </div>
     </div>
   );
