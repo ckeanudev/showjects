@@ -187,7 +187,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="name"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">Name</FormLabel>
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                Name
+              </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
               </FormControl>
@@ -202,7 +204,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="bio"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">Bio</FormLabel>
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                Bio
+              </FormLabel>
               <FormControl>
                 <Textarea rows={10} className="no-focus" {...field} />
               </FormControl>
@@ -217,7 +221,9 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="job"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">Job</FormLabel>
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Job (Opional)`}
+              </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
               </FormControl>
@@ -232,8 +238,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="location"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Location
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Location (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -249,8 +255,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="personalWebsite"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Personal Website/Portfolio
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Personal Website/Portfolio (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -266,8 +272,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="github"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Github Link
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Github Link (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -283,8 +289,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="linkedIn"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                LinkedIn Link
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`LinkedIn Link (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -300,8 +306,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="facebook"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Facebook Link
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Facebook Link (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -317,8 +323,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="twitter"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Twitter Link
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Twitter Link (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -334,8 +340,8 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="instagram"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
-                Instagram Link
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
+                {`Instagram Link (Opional)`}
               </FormLabel>
               <FormControl>
                 <Input type="text" className="no-focus" {...field} />
@@ -348,7 +354,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
         {!loadSpin && (
           <Button
             type="submit"
-            className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
+            className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 my-5">
             {btnTitle}
           </Button>
         )}
@@ -356,7 +362,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
         {loadSpin && (
           <Button
             disabled
-            className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5 cursor-default">
+            className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 my-5 cursor-default">
             <CgSpinner size={22} className="animate-spin" />
             {btnTitle}
           </Button>

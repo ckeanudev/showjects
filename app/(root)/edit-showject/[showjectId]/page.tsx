@@ -17,11 +17,11 @@ const Page = async ({ params }: { params: { showjectId: string } }) => {
 
   return (
     <section className="min-h-screen flex-1 bg-light-2 px-3 pt-3 pb-16">
-      <h1 className="text-xl font-semibold text-dark-1 border-b-[1px] pb-2 mb-5">
+      <h1 className="text-xl font-semibold text-dark-1 border-b-[1px] pb-2">
         {`Edit Showject | ${showjectInfo.title || ""}`}
       </h1>
 
-      <div className="max-w-[800px] mx-auto px-5 pt-5 pb-16">
+      <div className="max-w-[800px] mx-auto px-1 sm:px-3 md:px-5 py-5">
         <UpdateShowject
           _id={showjectInfo._id}
           title={showjectInfo.title}
