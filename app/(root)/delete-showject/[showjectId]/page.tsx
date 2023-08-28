@@ -57,7 +57,7 @@ const Page = async ({ params }: { params: { showjectId: string } }) => {
   };
 
   return (
-    <section className="min-h-screen flex-1 bg-light-2 p-3">
+    <section className="min-h-screen flex-1 bg-light-2 px-3 pt-3 pb-16">
       <h1 className="text-xl font-semibold text-dark-1 border-b-[1px] pb-2 mb-5">
         {`Delete Showject | ${showjectInfo.title}`}
       </h1>

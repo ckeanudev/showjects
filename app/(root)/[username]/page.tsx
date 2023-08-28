@@ -19,7 +19,7 @@ const Page = async ({ params }: { params: { username: string } }) => {
   const userPageInfo = await fetchUserByUsername(params.username);
 
   return (
-    <section className="flex-1 min-h-screen bg-light-2 p-3">
+    <section className="flex-1 min-h-screen bg-light-2 px-3 pt-3 pb-16">
       <div className="max-w-[800px] mx-auto px-3 py-10">
         <ProfileHeader currentUserDb={userInfo} userInfo={userPageInfo} />
 

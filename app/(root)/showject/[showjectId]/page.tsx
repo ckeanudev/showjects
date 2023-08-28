@@ -67,7 +67,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
   };
 
   return (
-    <section className="flex-1 min-h-screen bg-light-2 p-3">
+    <section className="flex-1 min-h-screen bg-light-2 px-3 pt-3 pb-16">
       <div className="max-w-[800px] mx-auto px-3 py-10">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
