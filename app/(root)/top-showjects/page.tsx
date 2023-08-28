@@ -14,7 +14,6 @@ async function Page() {
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   const topShowjects = await fetchTopShowject();
-  console.log(topShowjects);
 
   return (
     <section className="min-h-screen flex-1 bg-light-2 px-3 pt-3 pb-16">
