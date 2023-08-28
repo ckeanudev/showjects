@@ -10,6 +10,7 @@ import {
 } from "react-icons/bs";
 import FollowButton from "./FollowButton";
 import TempComponent from "./TempComponent";
+import { MdLocationPin, MdWork } from "react-icons/md";
 
 interface Props {
   currentUserDb: any;
@@ -165,13 +166,13 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
 
           <div className="flex items-center flex-warp gap-1">
             {job && (
-              <p className="text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
-                {job}
+              <p className="flex items-center gap-1 text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
+                <MdWork size={14} /> {job}
               </p>
             )}
             {location && (
-              <p className="text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
-                {location}
+              <p className="flex items-center gap-1 text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
+                <MdLocationPin size={14} /> {location}
               </p>
             )}
           </div>
