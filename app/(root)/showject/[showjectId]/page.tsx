@@ -8,6 +8,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { MdMoreHoriz } from "react-icons/md";
+
 const page = async ({ params }: { params: { showjectId: string } }) => {
   // ------- Fetch current logged in user's info from clerk and if not logged in the user will redirect to sign in page ------- //
   const user = await currentUser();
@@ -86,12 +93,47 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
             </div>
           </div>
 
-          <ShowjectLoveButton
-            authorId={showjectInfo.author._id}
-            showjectId={showjectInfo._id}
-            showjectLoveCount={showjectInfo.loveCount}
-            currentDbUser={userInfo._id}
-          />
+          <div className="flex gap-3 items-center">
+            <ShowjectLoveButton
+              authorId={showjectInfo.author._id}
+              showjectId={showjectInfo._id}
+              showjectLoveCount={showjectInfo.loveCount}
+              currentDbUser={userInfo._id}
+            />
+
+            <Popover>
+              <div className="relative">
+                <PopoverTrigger className="flex text-dark-2 hover:bg-light-3 p-2 rounded-md">
+                  <MdMoreHoriz size={28} />
+                </PopoverTrigger>
+
+                <PopoverContent className="absolute right-0 w-[120px] flex flex-col gap-2 p-1.5">
+                  {userInfo.id !== showjectInfo.author.id && (
+                    <Link
+                      href={`/report-showject/${showjectInfo._id}`}
+                      className="text-dark-2 hover:bg-light-2 p-1 rounded text-sm font-medium">
+                      Report
+                    </Link>
+                  )}
+
+                  {userInfo.id === showjectInfo.author.id && (
+                    <Link
+                      href={`/edit-showject/${showjectInfo._id}`}
+                      className="text-dark-2 hover:bg-light-2 p-1 rounded text-sm font-medium">
+                      Edit
+                    </Link>
+                  )}
+                  {userInfo.id === showjectInfo.author.id && (
+                    <Link
+                      href={`/delete-showject/${showjectInfo._id}`}
+                      className="text-dark-2 hover:bg-light-2 p-1 rounded text-sm font-medium">
+                      Delete
+                    </Link>
+                  )}
+                </PopoverContent>
+              </div>
+            </Popover>
+          </div>
         </div>
 
         <Image
