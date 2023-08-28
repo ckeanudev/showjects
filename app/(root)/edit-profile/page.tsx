@@ -33,7 +33,7 @@ const Page = async () => {
 
   return (
     <section className="flex-1 min-h-screen bg-light-2 px-3 pt-3 pb-16">
-      <h1 className="text-xl font-semibold text-dark-1 border-b-[1px] pb-2 mb-5">
+      <h1 className="text-base md:text-xl font-semibold text-dark-1 border-b-[1px] pb-2 mb-5">
         Edit Profile
       </h1>
 
