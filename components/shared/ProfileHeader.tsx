@@ -41,14 +41,14 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
 
   return (
     <div className="flex flex-col mb-5">
-      <div className="flex items-start gap-8">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
         <div className="relative">
           <Image
             src={image}
             alt={`${name}'s profile pic`}
             width={100}
             height={100}
-            className="w-[100px] h-[100px] rounded-full object-cover border"
+            className="w-[80px] md:w-[100px] h-[80px] md:h-[100px] rounded-full object-cover border"
           />
 
           {currentUserDb.id == userInfo.id && (
@@ -69,28 +69,32 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
         </div>
 
         <div>
-          <p className="text-2xl font-semibold text-dark-1 ">{name}</p>
-          <p className="text-sm text-dark-3">@{username}</p>
-          <div className="flex gap-5 items-center mt-2">
-            <p className="font-medium text-dark-2">
+          <p className="text-2xl font-semibold text-dark-1 text-center md:text-left">
+            {name}
+          </p>
+          <p className="text-sm text-dark-3 text-center md:text-left">
+            @{username}
+          </p>
+          <div className="flex gap-5 items-center mt-2 justify-center md:justify-start ">
+            <p className="text-sm lg:text-base font-medium text-dark-2">
               {showjectsCollection.length || 0}{" "}
               {showjectsCollection.length === 0 ||
               showjectsCollection.length === 1
                 ? `showject`
                 : `showjects`}
             </p>
-            <p className="font-medium text-dark-2">
+            <p className="text-sm lg:text-base font-medium text-dark-2">
               {followers.length || 0}{" "}
               {followers.length === 0 || followers.length === 1
                 ? `follower`
                 : `followers`}
             </p>
-            <p className="font-medium text-dark-2">
+            <p className="text-sm lg:text-base font-medium text-dark-2">
               {following.length || 0} following
             </p>
           </div>
 
-          <div className="flex gap-4 items-center mt-4">
+          <div className="flex gap-4 items-center mt-4 justify-center md:justify-start">
             {personalWebsite ? (
               <a
                 href={personalWebsite}
@@ -164,7 +168,7 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
             )}
           </div>
 
-          <div className="flex items-center flex-warp gap-1">
+          <div className="flex items-center justify-center md:justify-start flex-warp gap-1">
             {job && (
               <p className="flex items-center gap-1 text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
                 <MdWork size={14} /> {job}
@@ -182,7 +186,7 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
       <hr className="my-5" />
 
       <div className="px-2 rounded-md">
-        <p className="text-sm">{bio}</p>
+        <p className="text-sm text-center md:text-left text-dark-2">{bio}</p>
       </div>
     </div>
   );
