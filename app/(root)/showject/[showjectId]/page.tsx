@@ -103,7 +103,7 @@ const page = async ({ params }: { params: { showjectId: string } }) => {
 
             <Popover>
               <div className="relative">
-                <PopoverTrigger className="flex text-dark-2 hover:bg-light-3 p-2 rounded-md">
+                <PopoverTrigger className="flex text-dark-2 hover:bg-light-3 p-1 rounded-md">
                   <MdMoreHoriz size={28} />
                 </PopoverTrigger>
 
