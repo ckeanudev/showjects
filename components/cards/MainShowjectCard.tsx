@@ -76,7 +76,7 @@ const MainShowjectCard = ({
   };
 
   return (
-    <article className="bg-light-1 rounded-xl p-5 flex flex-col gap-3 mb-8 shadow-md">
+    <article className="bg-light-1 rounded-xl py-3 sm:py-5 px-2 sm:px-5 flex flex-col gap-3 mb-8 shadow-md">
       <div className="flex items-start justify-between gap-3 px-1">
         <div className="flex items-center gap-3">
           <Link href={`/${author.username}`}>
@@ -90,7 +90,7 @@ const MainShowjectCard = ({
           </Link>
           <div>
             <Link href={`/${author.username}`}>
-              <p className="text-dark-1 font-semibold hover:underline">
+              <p className="text-dark-1 font-semibold hover:underline text-sm md:text-base">
                 {author.name}
               </p>
             </Link>
@@ -133,24 +133,26 @@ const MainShowjectCard = ({
       </div>
 
       <Link href={`/showject/${showjectId}`}>
-        <div className="bg-light-2 hover:bg-light-3 p-4 rounded-xl">
+        <div className="bg-light-2 hover:bg-light-3 p-2 sm:p-4 rounded-md sm:rounded-xl">
           <Image
             src={image}
             alt={title || ""}
             width={800}
             height={400}
-            className="w-full h-[340px] object-contain rounded-lg bg-dark-4 mb-2"
+            className="w-full h-[220px] sm:h-[280px] md:h-[340px] object-contain rounded-lg bg-dark-4 mb-2"
           />
 
-          <h2 className="text-lg font-semibold text-dark-1">{title}</h2>
+          <h2 className="text-base md:text-lg font-semibold text-dark-1">
+            {title}
+          </h2>
 
-          <p className="text-sm text-dark-2 mb-3">{description}</p>
+          <p className="text-xs md:text-sm text-dark-2 mb-3">{description}</p>
 
           <p className="text-xs text-dark-3">{converDateTime(createdAt)}</p>
         </div>
       </Link>
 
-      <div className="flex items-center gap-5 px-3 pt-3">
+      <div className="flex items-center gap-5 px-3 pt-1 sm:pt-3">
         <p className="flex gap-2 items-center text-accent-2 font-medium">
           <FaRegHeart size={22} /> {loveCount.length || 0}
         </p>
