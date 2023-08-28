@@ -143,7 +143,7 @@ export async function fetchSearchDev(username: string) {
   try {
     connectToDB();
 
-    const userSearchedQuery = User.find({ username: { $in: "test" } });
+    const userSearchedQuery = User.find({ username: { $regex: "cke" } });
 
     const userSearch = await userSearchedQuery.exec();
 

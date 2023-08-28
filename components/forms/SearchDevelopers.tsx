@@ -81,7 +81,7 @@ const SearchDevelopers = () => {
       </Form>
 
       <div className="mt-5">
-        {/* {resultSearch.length > 0 ? "Not Empty" : "Empty"} */}
+        {resultSearch.length > 0 ? "Not Empty" : "Empty"}
       </div>
     </div>
   );

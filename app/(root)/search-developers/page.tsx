@@ -19,7 +19,7 @@ async function Page() {
       </h1>
 
       <div className="max-w-[800px] mx-auto px-1 sm:px-3 md:px-5 py-5">
-        {/* <SearchDevelopers /> */}
+        <SearchDevelopers />
       </div>
     </section>
   );
