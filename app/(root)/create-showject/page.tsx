@@ -18,7 +18,7 @@ async function Page() {
         Create your showject
       </h1>
 
-      <div className="max-w-[800px] mx-auto px-5 pt-5 pb-16">
+      <div className="max-w-[800px] mx-auto px-1 sm:px-3 md:px-5 py-5">
         <CreateShowject userId={userInfo._id} />
       </div>
     </section>

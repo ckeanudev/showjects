@@ -110,7 +110,7 @@ const CreateShowject = ({ userId }: Props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-5">
+        className="flex flex-col gap-3 md:gap-5">
         <FormField
           control={form.control}
           name="showject_photo"
@@ -124,11 +124,13 @@ const CreateShowject = ({ userId }: Props) => {
                     width={800}
                     height={800}
                     priority
-                    className="object-contain object-center w-full max-h-[400px] p-3 rounded-lg bg-light-3 cursor-pointer"
+                    className="object-contain object-center w-full max-h-[260px] md:max-h-[320px] lg:max-h-[400px] p-3 rounded-lg bg-light-3 cursor-pointer"
                   />
                 ) : (
-                  <div className="flex items-center justify-center w-full h-[400px] p-3 rounded-lg bg-light-3 cursor-pointer">
-                    <p className="text-lg text-dark-2">Click to Add Photo</p>
+                  <div className="flex items-center justify-center w-full h-[260px] md:h-[320px] lg:h-[400px] p-3 rounded-lg bg-light-3 cursor-pointer">
+                    <p className="text-sm sm:text-base md:text-lg text-dark-2">
+                      Click to Add Photo
+                    </p>
                   </div>
                 )}
               </FormLabel>
@@ -152,7 +154,7 @@ const CreateShowject = ({ userId }: Props) => {
           name="title"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
                 Showject Title
               </FormLabel>
               <FormControl>
@@ -169,7 +171,7 @@ const CreateShowject = ({ userId }: Props) => {
           name="description"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
                 Showject Description
               </FormLabel>
               <FormControl>
@@ -186,7 +188,7 @@ const CreateShowject = ({ userId }: Props) => {
           name="sourceCodeUrl"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
                 Source Code URL
               </FormLabel>
               <FormControl>
@@ -203,7 +205,7 @@ const CreateShowject = ({ userId }: Props) => {
           name="liveUrl"
           render={({ field }) => (
             <FormItem className="flex flex-col">
-              <FormLabel className="font-medium text-dark-4">
+              <FormLabel className="font-medium text-dark-4 text-xs sm:text-sm md:text-base">
                 Live URL
               </FormLabel>
               <FormControl>
