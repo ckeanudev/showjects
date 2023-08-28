@@ -7,6 +7,7 @@ import RightNavbar from "@/components/shared/RightNavbar";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { fetchUserByAuthID } from "@/lib/actions/user.actions";
+import MobileNavbar from "@/components/shared/MobileNavbar";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -44,6 +45,8 @@ export default async function RootLayout({
               authUserId={user?.id || userInfo?.id}
               dbUserId={userInfo?._id}
             />
+
+            <MobileNavbar currentUsername={userInfo?.username} />
           </main>
         </body>
       </html>
