@@ -11,6 +11,7 @@ import {
 import FollowButton from "./FollowButton";
 import TempComponent from "./TempComponent";
 import { MdLocationPin, MdWork } from "react-icons/md";
+import { SignOutButton, SignedIn } from "@clerk/nextjs";
 
 interface Props {
   currentUserDb: any;
@@ -52,11 +53,21 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
           />
 
           {currentUserDb.id == userInfo.id && (
-            <Link href="/edit-profile">
-              <p className="absolute flex items-center justify-center bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] bg-accent-1 hover:bg-accent-1_hover font-medium text-light-1 text-sm w-[100px] p-1 rounded-md">
-                Edit Profile
-              </p>
-            </Link>
+            <div className="absolute bottom-0 left-[50%] translate-x-[-50%] translate-y-[50%] flex gap-1">
+              <Link href="/edit-profile">
+                <p className=" flex items-center justify-center  bg-accent-1 hover:bg-accent-1_hover font-medium text-light-1 text-sm w-[100px] p-1 rounded-md">
+                  Edit Profile
+                </p>
+              </Link>
+
+              <SignedIn>
+                <SignOutButton>
+                  <p className="flex md:hidden items-center justify-center  bg-dark-1 hover:bg-dark-2 font-medium text-light-1 text-sm w-[100px] p-1 rounded-md">
+                    Sign Out
+                  </p>
+                </SignOutButton>
+              </SignedIn>
+            </div>
           )}
 
           {currentUserDb.id !== userInfo.id && (
@@ -69,27 +80,27 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
         </div>
 
         <div>
-          <p className="text-2xl font-semibold text-dark-1 text-center md:text-left">
+          <p className="text-lg md:text-2xl font-semibold text-dark-1 text-center md:text-left">
             {name}
           </p>
           <p className="text-sm text-dark-3 text-center md:text-left">
             @{username}
           </p>
           <div className="flex gap-5 items-center mt-2 justify-center md:justify-start ">
-            <p className="text-sm lg:text-base font-medium text-dark-2">
+            <p className="text-xs sm:text-sm lg:text-base font-medium text-dark-2">
               {showjectsCollection.length || 0}{" "}
               {showjectsCollection.length === 0 ||
               showjectsCollection.length === 1
                 ? `showject`
                 : `showjects`}
             </p>
-            <p className="text-sm lg:text-base font-medium text-dark-2">
+            <p className="text-xs sm:text-sm lg:text-base font-medium text-dark-2">
               {followers.length || 0}{" "}
               {followers.length === 0 || followers.length === 1
                 ? `follower`
                 : `followers`}
             </p>
-            <p className="text-sm lg:text-base font-medium text-dark-2">
+            <p className="text-xs sm:text-sm lg:text-base font-medium text-dark-2">
               {following.length || 0} following
             </p>
           </div>
@@ -168,14 +179,14 @@ const ProfileHeader = ({ currentUserDb, userInfo }: Props) => {
             )}
           </div>
 
-          <div className="flex items-center justify-center md:justify-start flex-warp gap-1">
+          <div className="mt-5 flex items-center justify-center md:justify-start flex-wrap gap-1">
             {job && (
-              <p className="flex items-center gap-1 text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
+              <p className="flex items-center gap-1 text-xs font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
                 <MdWork size={14} /> {job}
               </p>
             )}
             {location && (
-              <p className="flex items-center gap-1 text-xs mt-5 font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
+              <p className="flex items-center gap-1 text-xs  font-semibold text-dark-3 bg-light-3 py-0.5 px-1.5 rounded">
                 <MdLocationPin size={14} /> {location}
               </p>
             )}
