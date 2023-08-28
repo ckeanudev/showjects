@@ -30,13 +30,13 @@ const DeleteShowject = ({ showjectId, userId }: Props) => {
       {!loadSpin && (
         <button
           onClick={deleteShowjectFun}
-          className="w-full flex item-center justify-center mt-10 bg-accent-2 p-2 text-light-1 rounded-md font-medium hover:bg-accent-2_hover">
+          className="w-full flex item-center justify-center mt-5 bg-accent-2 p-2 text-light-1 rounded-md font-medium hover:bg-accent-2_hover">
           Delete this showject
         </button>
       )}
 
       {loadSpin && (
-        <button className="w-full flex gap-2 item-center justify-center mt-10 bg-accent-2_hover p-2 text-light-1 rounded-md font-medium cursor-default">
+        <button className="w-full flex gap-2 item-center justify-center mt-5 bg-accent-2_hover p-2 text-light-1 rounded-md font-medium cursor-default">
           <CgSpinner size={22} className="animate-spin" /> Delete this showject
         </button>
       )}

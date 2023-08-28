@@ -62,27 +62,27 @@ const Page = async ({ params }: { params: { showjectId: string } }) => {
         {`Delete Showject | ${showjectInfo.title}`}
       </h1>
 
-      <div className="max-w-[800px] mx-auto px-5 pt-5 pb-16">
+      <div className="max-w-[800px] mx-auto px-1 sm:px-3 md:px-5 py-5">
         <Image
           src={showjectInfo.showjectImg}
           alt="showject photo"
           width={800}
           height={800}
           priority
-          className="object-contain object-center w-full max-h-[400px] p-3 rounded-lg bg-light-3 mb-3"
+          className="object-contain object-center w-full max-h-[260px] md:max-h-[320px] lg:max-h-[400px] p-3 rounded-lg bg-light-3 mb-3"
         />
 
-        <h2 className="text-2xl font-bold text-dark-1 mb-1">
+        <h2 className="text-xl md:text-2xl font-bold text-dark-1 mb-1">
           {showjectInfo.title}
         </h2>
 
-        <p className="text-sm text-dark-3 font-medium">
+        <p className="text-xs md:text-sm text-dark-3 font-medium">
           {showjectInfo.description}
         </p>
 
         <div className="mt-4 flex flex-col gap-1">
           {showjectInfo.liveUrl != "" && (
-            <p className="text-sm font-medium text-dark-2">
+            <p className="text-xs md:text-sm font-medium text-dark-2">
               Live URL:{" "}
               <a
                 className="text-accent-1 hover:text-accent-1_hover"
@@ -94,7 +94,7 @@ const Page = async ({ params }: { params: { showjectId: string } }) => {
             </p>
           )}
 
-          <p className="text-sm font-medium text-dark-2">
+          <p className="text-xs md:text-sm font-medium text-dark-2">
             Source Code URL:{" "}
             <a
               className="text-accent-2 hover:text-accent-2_hover"
