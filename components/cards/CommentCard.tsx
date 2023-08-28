@@ -70,9 +70,8 @@ const CommentCard = ({
 
       <div className="flex-1 ">
         <div className="bg-light-1 p-3 rounded-md ">
-          <p className="text-dark-1 text-base font-semibold" mb-1>
-            {name}
-          </p>
+          <p className="text-dark-1 text-base font-semibold">{name}</p>
+
           <p className="text-sm text-dark-2">{text}</p>
 
           <hr className="my-2" />
