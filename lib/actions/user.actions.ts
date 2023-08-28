@@ -138,3 +138,17 @@ export async function followUser(
     throw new Error(`Failed to follow user: ${error.message}`);
   }
 }
+
+export async function fetchSearchDev(username: string) {
+  try {
+    connectToDB();
+
+    const userSearchedQuery = User.find({ username: { $in: "test" } });
+
+    const userSearch = await userSearchedQuery.exec();
+
+    return userSearch;
+  } catch (error: any) {
+    throw new Error(`Failed to search devs: ${error.message}`);
+  }
+}
