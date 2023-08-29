@@ -4,7 +4,12 @@ import Link from "next/link";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 import MainNavLinks from "./MainNavLinks";
 
-import { MdAddCircle, MdPersonSearch, MdHome } from "react-icons/md";
+import {
+  MdAddCircle,
+  MdPersonSearch,
+  MdHome,
+  MdMenuBook,
+} from "react-icons/md";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { BiSolidLogOutCircle } from "react-icons/bi";
 
@@ -60,6 +65,10 @@ const LeftNavbar = ({
           <MainNavLinks href="/search-developers">
             <MdPersonSearch size={22} />
             Search Developers
+          </MainNavLinks>
+          <MainNavLinks href="/learn">
+            <MdMenuBook size={22} />
+            Learn
           </MainNavLinks>
         </div>
 

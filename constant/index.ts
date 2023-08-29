@@ -131,3 +131,42 @@ export const smallProjects = [
     liveLink: `https://order-summary-card-ckeanu.netlify.app`,
   },
 ];
+
+export const learnSite = [
+  {
+    title: "freeCodeCamp",
+    link: "https://www.freecodecamp.org/",
+    image: "/images/Learn/L1.png",
+    description: `freeCodeCamp is a non-profit organization that consists of an interactive learning web platform, an online community forum, chat rooms, online publications and local organizations that intend to make learning software development accessible to anyone.`,
+  },
+  {
+    title: "The Odin Project",
+    link: "https://www.theodinproject.com/",
+    image: "/images/Learn/L2.png",
+    description: `The Odin Project is one of those "What I wish I had when I was learning" resources. Not everyone has access to a computer science education or the funds to attend an intensive coding school and neither of those is right for everyone anyway. This project is designed to fill in the gap for people who are trying to hack it on their own but still want a high quality education.`,
+  },
+  {
+    title: "Codecademy",
+    link: "https://www.codecademy.com/",
+    image: "/images/Learn/L3.webp",
+    description: `Codecademy is an American online interactive platform that offers free coding classes in 12 different programming languages including Python, Java, Go, JavaScript, Ruby, SQL, C++, C#, and Swift, as well as markup languages HTML and CSS.`,
+  },
+  {
+    title: "Sololearn",
+    link: "https://www.sololearn.com/",
+    image: "/images/Learn/L4.png",
+    description: `Courses designed by experts with real-world practice. Join our global community. No matter your experience level, you'll be writing real, functional code within minutes of starting your first course.Go step-by-step through our unique courses. Assess what you’ve learned with in-lesson quizzes, and gradually advance your skills with practice.Earn a certificate to validate your newly acquired skills.`,
+  },
+  {
+    title: "GeeksforGeeks",
+    link: "https://www.geeksforgeeks.org/",
+    image: "/images/Learn/L5.jpg",
+    description: `GeeksforGeeks is a leading platform that provides computer science resources and coding challenges for programmers and technology enthusiasts, along with interview and exam preparations for upcoming aspirants. With a strong emphasis on enhancing coding skills and knowledge, it has become a trusted destination for over 12 million plus registered users worldwide.`,
+  },
+  {
+    title: "W3Schools",
+    link: "https://www.w3schools.com/",
+    image: "/images/Learn/L6.jpg",
+    description: `W3Schools is a freemium educational website for learning coding online. Initially released in 1998, it derives its name from the World Wide Web but is not affiliated with the W3 Consortium. W3Schools offers courses covering many aspects of web development. W3Schools also publishes free HTML templates.`,
+  },
+];
