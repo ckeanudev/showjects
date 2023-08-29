@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
-import { FaRegCommentDots, FaRegHeart } from "react-icons/fa";
+import { FaCommentDots, FaHeart } from "react-icons/fa";
 import { MdMoreHoriz } from "react-icons/md";
 
 import {
@@ -154,10 +154,10 @@ const MainShowjectCard = ({
 
       <div className="flex items-center gap-5 px-3 pt-1 sm:pt-3">
         <p className="flex gap-2 items-center text-accent-2 font-medium">
-          <FaRegHeart size={22} /> {loveCount.length || 0}
+          <FaHeart size={22} /> {loveCount.length || 0}
         </p>
         <p className="flex gap-2 items-center text-accent-1 font-medium">
-          <FaRegCommentDots size={22} />
+          <FaCommentDots size={22} />
           {comments.length || 0}
         </p>
       </div>
