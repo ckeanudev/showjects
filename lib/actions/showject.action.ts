@@ -189,3 +189,20 @@ export async function fetchTopShowject() {
     throw new Error(`Failed to fetch top showjects: ${error.message}`);
   }
 }
+
+export async function fetchTopShowjectForLandingPage() {
+  try {
+    connectToDB();
+
+    const showjectsQuery = Showject.find()
+      .sort({ loveCount: -1 })
+      .populate({ path: "author", model: User })
+      .limit(6);
+
+    const showjects = await showjectsQuery.exec();
+
+    return showjects;
+  } catch (error: any) {
+    throw new Error(`Failed to fetch top showjects: ${error.message}`);
+  }
+}
