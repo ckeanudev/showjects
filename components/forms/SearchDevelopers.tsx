@@ -20,7 +20,11 @@ import { fetchSearchDev } from "@/lib/actions/user.actions";
 import { Input } from "../ui/input";
 import SearchedDevCard from "../cards/SearchedDevCard";
 
-const SearchDevelopers = () => {
+interface Props {
+  dbUserId: any;
+}
+
+const SearchDevelopers = ({ dbUserId }: Props) => {
   const pathname = usePathname();
   const [loadSpin, setLoadSpin] = useState<boolean>(false);
   const [resultSearch, setResultSearch] = useState<any>([]);
@@ -35,7 +39,7 @@ const SearchDevelopers = () => {
   const onSubmit = async (values: z.infer<typeof SearchDevValidation>) => {
     setLoadSpin(true);
 
-    const result = await fetchSearchDev(values.username);
+    const result = await fetchSearchDev(values.username, dbUserId);
 
     console.log(result);
     setResultSearch(result);

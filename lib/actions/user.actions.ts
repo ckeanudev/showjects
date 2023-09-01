@@ -139,11 +139,14 @@ export async function followUser(
   }
 }
 
-export async function fetchSearchDev(username: string) {
+export async function fetchSearchDev(username: string, dbUserId: any) {
   try {
     connectToDB();
 
-    const userSearchedQuery = User.find({ username: { $regex: username } });
+    const userSearchedQuery = User.find({
+      _id: { $nin: dbUserId },
+      username: { $regex: username },
+    });
 
     const userSearch = await userSearchedQuery.exec();
 
