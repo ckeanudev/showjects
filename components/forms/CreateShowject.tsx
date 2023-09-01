@@ -216,10 +216,16 @@ const CreateShowject = ({ userId }: Props) => {
           )}
         />
 
+        <p className="my-5 text-center text-red-500 font-medium">
+          Only share about your software development projects so other
+          developers can review your source code and give you feedback on
+          ways/tips to help you get better.
+        </p>
+
         {!loadSpin && (
           <Button
             type="submit"
-            className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5">
+            className="bg-accent-1 hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 ">
             Share My Showject
           </Button>
         )}
@@ -227,7 +233,7 @@ const CreateShowject = ({ userId }: Props) => {
         {loadSpin && (
           <Button
             disabled
-            className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 mt-5 cursor-default">
+            className="bg-accent-1_hover hover:bg-accent-1_hover flex gap-2 items-center text-light-1 font-medium text-base p-6 cursor-default">
             <CgSpinner size={22} className="animate-spin" />
             Share My Showject
           </Button>
