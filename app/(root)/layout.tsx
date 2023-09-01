@@ -31,7 +31,8 @@ export default async function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={montserrat.className}>
+        <body
+          className={`${montserrat.className} max-w-[1920px] mx-auto bg-light-1`}>
           <main className="w-full flex">
             <LeftNavbar
               authUserId={user?.id || userInfo?.id}

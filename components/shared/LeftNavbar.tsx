@@ -29,7 +29,7 @@ const LeftNavbar = ({
   username,
 }: Props) => {
   return (
-    <section className="sticky top-0 left-0 h-screen bg-light-1 p-6 w-[320px] hidden md:flex flex-col">
+    <section className="sticky top-0 left-0 h-screen bg-light-1 p-6 w-[320px] hidden md:flex flex-col border-l">
       <Link href="/home">
         <Image
           src="/images/logo-light.svg"
