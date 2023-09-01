@@ -9,7 +9,6 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 import FollowButton from "./FollowButton";
-import TempComponent from "./TempComponent";
 import { MdLocationPin, MdWork } from "react-icons/md";
 import { SignOutButton, SignedIn } from "@clerk/nextjs";
 
